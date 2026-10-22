@@ -1,0 +1,11 @@
+# Python 3.12. Versiones de referencia del entorno de clase.
+# Validar con pip check después de instalar; no es un lock de transitivas.
+langchain-core==1.6.10
+langgraph==1.2.15
+langchain-google-genai==4.4.2
+langchain-chroma==1.1.0
+chromadb==1.5.9
+langchain-text-splitters==1.1.3
+pypdf==6.20.1
+python-dotenv==1.2.4
+ipykernel==7.4.0

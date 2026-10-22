@@ -1,0 +1,32 @@
+# Credenciales y configuración local
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+
+# Entorno y archivos generados
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+Thumbs.db
+
+# Corpus e índices: registrar las fuentes en docs/FUENTES.md
+/data/corpus/*
+!/data/corpus/.gitkeep
+/data/chroma/*
+!/data/chroma/.gitkeep
+/outputs/*
+!/outputs/.gitkeep
+
+# Enunciado docente local; no se publica en GitHub
+/*.pdf
