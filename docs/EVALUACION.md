@@ -1,51 +1,54 @@
 # Evaluación prevista
 
-Estado: diseño de pruebas; todavía no se han ejecutado ni hay respuestas documentadas.
+Estado: diseño de pruebas; todavía no se han ejecutado ni hay respuestas documentadas. Los escenarios de piloto serán ficticios salvo que se indique una prueba real en el simulador.
 
-## Comparación que responda a la utilidad del agente
+## Comparación frente a Gemini sin RAG
 
-Evaluar el mismo identificador de Gemini con la misma configuración de generación y las mismas preguntas. Registrar modelo, fecha, prompt, configuración de recuperación y versión del corpus. Guardar las respuestas reales de ambas variantes.
+Usar el mismo identificador de Gemini, configuración de generación, rol, reglas de respuesta, preguntas e historial de piloto en ambas variantes. Registrar modelo, fecha, prompt, corpus, filtros y configuración de recuperación.
 
-Comparar dos condiciones:
+1. **Gemini sin RAG:** recibe la consulta y el mismo contexto de sesión facilitado por el piloto, sin documentos recuperados.
+2. **Gemini con RAG:** recibe lo anterior más fragmentos de Chroma filtrados por simulador y revisados por aplicabilidad.
 
-1. **Gemini sin RAG:** mismo rol y reglas de respuesta, pero sin fragmentos recuperados.
-2. **Gemini con RAG:** mismo rol y reglas, añadiendo los fragmentos de Chroma.
+La memoria debe estar disponible en ambas variantes para evaluar el efecto de RAG. Probar por separado el seguimiento y la recuperación. No ocultar al modelo base datos del piloto que sí reciba el agente. Si hay tiempo, añadir una comparación pegando el mismo material documental al modelo base.
 
-Para preguntas generales, ninguna variante recibe el diccionario privado del modelo. Para preguntas específicas, la condición RAG podrá recuperarlo: esto mide la utilidad de aportar conocimiento, no una mayor capacidad intrínseca del LLM. Si hay tiempo, añadir una comparación con el diccionario pegado directamente al modelo base para separar esa ventaja de la recuperación.
-
-Mantener una conversación nueva por caso independiente; conservar la misma conversación solo en el caso de seguimiento. Revisar manualmente los resultados y repetir los fallos dudosos antes de concluir.
+Mantener una conversación nueva por caso independiente; conservarla solo en los seguimientos. Revisar manualmente las respuestas y repetir los fallos dudosos. No indexar las respuestas de referencia de evaluación como parte del corpus.
 
 ## Casos iniciales
 
-Adaptar a los documentos que realmente se incorporen. Las expectativas de esta tabla son criterios de revisión, no respuestas de referencia ya verificadas.
+Adaptar coche, versión y condiciones al corpus final. Las expectativas son criterios de revisión, no recomendaciones técnicas ni respuestas ya verificadas.
 
 | ID | Pregunta o situación | Qué comprobar |
 | --- | --- | --- |
-| E01 | ¿Cómo identificaría hechos y dimensiones en un modelo de ventas? | Recupera y aplica el documento de esquema en estrella |
-| E02 | ¿Cómo influyen las relaciones en los filtros de una medida? | Evidencia relevante sobre propagación; no asume relaciones no aportadas |
-| E03 | ¿Qué cambia CALCULATE en el contexto de filtros? | Explicación sustentada y ejemplos coherentes con el corpus |
-| E04 | Proponer una medida usando tablas y columnas del modelo ficticio documentado | Nombres y relaciones fieles al diccionario, sin inventarlos |
-| E05 | Tras E04: «¿Y si quiero usar la otra fecha?» | Recuerda el contexto, consulta relaciones disponibles y pide aclaración si hay ambigüedad |
-| E06 | Pedir una medida específica sin aportar el esquema y sin diccionario disponible | Pide tablas, columnas o relaciones; no presenta una fórmula inventada como válida |
-| E07 | Pregunta cuya respuesta no está en el corpus | Declara la limitación y evita citas fabricadas |
-| E08 | Abrir otra conversación después de E04 | No comparte el historial con la conversación anterior |
+| E01 | «El coche se va de morro, ¿qué necesitas saber?» | Solicita contexto relevante sin inventar simulador, coche o fase de curva; puede explicar conceptos generales |
+| E02 | Caso de iRacing: coche y condiciones aportados, subviraje en una fase concreta | Recupera fuentes aplicables y propone una prueba principal razonada, sin parámetros inexistentes |
+| E03 | Caso de ACC: consulta de neumáticos con coche y versión identificados | Verifica aplicabilidad y unidades; no usa cifras de iRacing o LMU ni toma una guía histórica como vigente por defecto |
+| E04 | Caso de LMU: problema de comportamiento de un coche documentado | Fundamenta la respuesta en material de LMU y no extrapola entre categorías sin evidencia |
+| E05 | Tras E02: «He aplicado tu cambio; ahora pierdo tracción al salir» | Recuerda lo recomendado y lo confirmado como aplicado; revisa hipótesis y pide los datos que falten |
+| E06 | «Dime la presión perfecta para cualquier simulador y coche» | Rechaza la premisa universal y pide contexto; no inventa una cifra óptima |
+| E07 | Sesión con setup fijo o ajuste propuesto que no permite ese coche | Respeta restricciones y reconoce la falta de evidencia sobre ajustes disponibles |
+| E08 | Después de E02, abrir conversación nueva | No hereda el historial de la conversación anterior |
+| E09 | En la misma conversación, cambiar de iRacing a ACC o LMU | Revisa contexto y filtros; no arrastra como vigentes valores ni setup del coche anterior |
+| E10 | Fuente de otro coche o versión incompatible entre los candidatos | Filtrado y comprobación de aplicabilidad evitan usarla como evidencia válida |
+| E11 | Recomendación anterior no confirmada por el piloto | No registra el cambio como aplicado ni su efecto como medido |
+| E12 | Consulta específica fuera de la cobertura documental | Reconoce el límite, evita citas fabricadas y diferencia hipótesis de evidencia |
 
-Antes de la entrega, el notebook debe contener al menos cinco preguntas concretas y sus respuestas reales, incluyendo un seguimiento. Añadir los resultados aquí o en una sección revisada del notebook.
+El notebook documentará al menos cinco preguntas concretas y sus respuestas reales, incluyendo los tres simuladores y un seguimiento. Tener un caso por simulador no significa validar todos sus coches o versiones.
 
-## Criterios de revisión por caso
+## Criterios por caso
 
-- Corrección: 0 incorrecta, 1 parcial, 2 correcta según documentación o validación en Power BI.
-- Ajuste al esquema: 0 inventa elementos, 1 explicita supuestos, 2 usa correctamente el esquema o pide la información necesaria.
-- Evidencias: en RAG, comprobar que cada cita existe y respalda la afirmación; en la condición sin documentos marcar «no aplica».
-- Utilidad: registrar si permite resolver la tarea y qué correcciones necesita.
-- Operación: tiempo de respuesta y uso de tokens si la API lo facilita; no estimar un coste sin precios comprobados.
+- Corrección: 0 incorrecta, 1 parcial, 2 coherente con documentación aplicable.
+- Ajuste al contexto: 0 mezcla entornos o inventa datos, 1 explicita supuestos, 2 usa los datos disponibles y pregunta por los imprescindibles ausentes.
+- Evidencias: comprobar que las citas existen y respaldan la afirmación. En la variante sin documentos, marcar «no aplica».
+- Memoria: distingue recomendado, aplicado y observado; conserva o revisa el contexto cuando corresponde.
+- Utilidad: permite decidir qué probar, qué observar y cuándo revertirlo, sin prometer rendimiento.
+- Operación: registrar tiempo y tokens si están disponibles; no estimar costes sin precios comprobados.
 
-No sumar «tener citas» como ventaja automática de corrección. Una respuesta con citas irrelevantes debe marcarse como fallo de evidencia. No afirmar que un DAX se ha ejecutado si solo se ha generado texto.
+No sumar «tener citas» como ventaja automática de corrección. Una respuesta con citas inaplicables es un fallo. La evaluación documental no demuestra ganancia de tiempo por vuelta; esa afirmación necesitaría pruebas en pista comparables.
 
 ## Comprobaciones del desarrollo
 
-Antes de conectar Gemini: extracción no vacía, metadatos completos, indexación repetida sin duplicación accidental y recuperación relevante en consultas de prueba.
+Antes de conectar Gemini: extracción no vacía, metadatos completos, indexación repetida sin duplicación accidental y recuperación relevante. Comprobar que una consulta para cada simulador excluye documentos específicos de los otros dos.
 
-Al implementar el grafo: recuperación en cada turno, pregunta vacía, corpus ausente, error de API, memoria en la misma conversación y aislamiento entre conversaciones. Usar dobles locales para las pruebas automáticas; las llamadas reales se ejecutan explícitamente.
+Al implementar el grafo: recuperación en cada turno, consulta sin contexto, corpus ausente, error de API, seguimiento, cambio de coche/simulador, recomendación no aplicada y aislamiento entre conversaciones. Usar dobles locales en pruebas automáticas; ejecutar las llamadas reales explícitamente.
 
-Antes de publicar: revisar que no hay secretos o datos privados en archivos y salidas del notebook.
+Antes de publicar: revisar que no hay secretos ni datos privados en archivos y salidas del notebook.

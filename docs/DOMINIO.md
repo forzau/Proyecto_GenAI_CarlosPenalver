@@ -1,37 +1,60 @@
-# Propuesta: asistente de DAX y modelado en Power BI
+# Ingeniero de boxes para simracing
 
-Estado: propuesta inicial que ha interesado al alumno. Confirmar alcance antes de recopilar el corpus.
+Dominio confirmado por el alumno el 22/10/2026. El diseño cubrirá diagnóstico general e iRacing, Assetto Corsa Competizione (ACC) y Le Mans Ultimate (LMU). La profundidad demostrable de cada simulador depende del corpus; todavía no hay coches ni versiones validados.
 
 ## Usuario y problema
 
-Una persona que desarrolla informes y necesita entender medidas DAX, contexto de filtros y relaciones. El asistente buscará evidencias y aplicará las explicaciones al esquema que reciba.
+Un piloto de simracing describe el comportamiento del coche y necesita saber qué información falta, qué hipótesis considerar y qué cambio merece probar. El asistente debe explicar la recomendación con fuentes y continuar la sesión cuando el piloto comunica el resultado.
 
 ## Alcance de una semana
 
-- Modelado en estrella: tablas de hechos, dimensiones y granularidad.
-- Relaciones, dirección de filtrado y relaciones activas/inactivas.
-- Medidas DAX centradas en CALCULATE y contexto de filtros.
-- Un modelo de ventas ficticio con diccionario de tablas, columnas, relaciones y medidas. Se escribirá al desarrollar el corpus; todavía no existe.
+- Interpretar subviraje, sobreviraje, inestabilidad en frenada y pérdida de tracción, considerando entrada, mitad y salida de curva.
+- Preguntar por el contexto relevante antes de recomendar ajustes concretos.
+- Recuperar documentación del simulador seleccionado y documentación general de aplicabilidad revisada.
+- Explicar ajustes documentados de neumáticos, frenos, suspensión, diferencial o aerodinámica; no se promete cubrirlos todos para cada coche.
+- Proponer un cambio principal cada vez, con motivo, observación esperada y criterio para conservarlo o revertirlo.
+- Recordar recomendaciones, cambios realmente aplicados y observaciones del piloto durante la conversación.
+- Mostrar fuentes y una interfaz Streamlit con selector de simulador, contexto de sesión y chat.
 
-Fuera del MVP: administración de Fabric, licencias, gateways, actualización de datos, todo Power Query, conexión a Power BI Service, lectura de PBIX y ejecución o modificación automática de informes.
+Fuera del MVP: telemetría en directo, análisis automático de archivos de telemetría, voz o radio, modificación de archivos de setup, conexión con el juego, optimización automática, estrategia completa de resistencia y promesas de mejora de tiempos.
 
-## Cuándo puede aportar valor frente a un modelo base
+## General frente a específico
 
-1. Consultas sobre el esquema ficticio que Gemini no conoce de antemano.
-2. Respuestas respaldadas por fragmentos concretos de documentación seleccionada.
-3. Seguimientos que conservan las tablas y restricciones del turno anterior.
-4. Reconocer cuándo faltan datos para proponer una medida.
+Un diagnóstico general puede comenzar sin identificar el simulador. Los valores, rangos y ajustes concretos necesitan evidencia aplicable al simulador, coche, versión y condiciones. Si falta, el agente explica la limitación o pide los datos necesarios en lugar de trasladar recomendaciones de otro entorno.
 
-En preguntas generales el modelo base puede ser igual o mejor. El RAG puede recuperar fragmentos irrelevantes o incompletos. La comparación de EVALUACION.md debe reflejar ambos casos; no se asumirá superioridad.
+Usaremos un solo agente y un único grafo. Los metadatos y filtros de recuperación delimitan el contexto antes de generar la respuesta; el prompt añade comprobaciones de aplicabilidad. Los documentos de iRacing no se etiquetarán como generales para usarlos en ACC o LMU.
 
-## Caso de uso para la demo
+Objetivo de demo: al menos un caso respaldado de cada simulador, un seguimiento de sesión y una consulta sin evidencia suficiente. Esto no equivale a cubrir todos sus coches y versiones.
 
-Definir una medida sobre el modelo ficticio, explicar cómo interactúa con sus relaciones y adaptar la medida en un segundo turno. Mostrar la documentación que sustenta la explicación y una consulta cuya respuesta no está en el corpus.
+## Contexto mínimo de una sesión
 
-## Decisiones abiertas
+Recoger progresivamente solo lo necesario para la consulta:
 
-- ¿Qué problema de Power BI aparece con más frecuencia en el trabajo del alumno?
-- ¿Qué esquema ficticio representa bien ese problema?
-- ¿Qué documentos y versiones concretas formarán el corpus?
-- ¿Cuál es la fecha y hora exactas de entrega?
-- ¿Qué cuota o presupuesto de Gemini estará disponible para las pruebas?
+- Simulador, versión si afecta a la respuesta, coche y categoría.
+- Circuito o tipo de curva, fase y velocidad aproximada del problema.
+- Condiciones relevantes: seco/mojado, temperaturas, combustible, neumáticos y vueltas de calentamiento, si se conocen.
+- Setup de partida, restricciones fixed/open y valores actuales relevantes, con unidades.
+- Síntoma descrito, cambios confirmados por el piloto y resultado observado.
+
+Un dato desconocido se mantiene como desconocido. Una recomendación no se registra como aplicada hasta que lo diga el piloto. Cambiar de simulador o coche obliga a revisar el contexto y evita arrastrar reglajes como si siguieran vigentes.
+
+## Utilidad que debemos comprobar
+
+1. Recomendaciones ligadas a documentos aplicables, con citas verificables.
+2. Reconocimiento de información ausente y límites de cobertura.
+3. Coherencia entre turnos al registrar una prueba de ajuste.
+4. Separación entre diagnóstico general y parámetros específicos de cada simulador.
+
+El modelo base puede resolver bien preguntas generales. RAG puede fallar si recupera una versión antigua o un coche equivocado. Compararemos ambas variantes sin asumir superioridad.
+
+## Caso de demo
+
+El piloto identifica simulador y coche y describe subviraje en una fase concreta. El agente solicita el dato imprescindible que falte, recupera fuentes y propone una prueba. El piloto confirma si la aplicó y relata el resultado. El agente revisa el diagnóstico conservando el contexto. Al cambiar de simulador, no reutiliza cifras anteriores.
+
+Los diálogos de prueba serán escenarios ficticios identificados como tales. Las mejoras reales en pista solo se documentarán si el alumno las prueba; una respuesta coherente no demuestra por sí sola mejora de rendimiento.
+
+## Decisiones pendientes
+
+- Seleccionar documentos sustanciales de los tres simuladores y registrar sus versiones.
+- Elegir los coches de demo según documentación disponible y experiencia del alumno.
+- Confirmar fecha y hora exactas de entrega y cuota o presupuesto de Gemini para las pruebas.
