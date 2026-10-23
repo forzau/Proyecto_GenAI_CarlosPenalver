@@ -87,3 +87,9 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - Pruebas automáticas locales sin API para formato de petición, persistencia, reutilización, separación de corpus, filtros e inputs inválidos.
 - Uso real limitado a la indexación del corpus y tres consultas; la prueba inicial con la credencial heredada fue rechazada antes de copiar la clave autorizada de clase. No se generaron respuestas de chat. No se conoce facturación efectiva de la cuenta; no se activó ni modificó.
 - Siguiente trabajo: Gemini LLM, prompt y grafo LangGraph. No ampliar el corpus ni repetir consultas de API por rutina.
+
+## Presentación del notebook simplificada (23/10/2026)
+
+- Retirados asserts, comprobaciones de entorno y pruebas de persistencia del notebook. Celdas directas: configuración, corpus, embeddings, Chroma y un ejemplo de búsqueda.
+- La evaluación real de tres consultas queda en `scripts/evaluate_retrieval.py`; las pruebas automáticas permanecen en `tests/`. Los resultados anteriores se conservan en EVALUACION.md y en el informe local.
+- Sin nuevas llamadas a Gemini por este cambio.

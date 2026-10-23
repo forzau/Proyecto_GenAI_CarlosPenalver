@@ -69,7 +69,7 @@ Antes de publicar: revisar que no hay secretos ni datos privados en archivos y s
 
 ## Recuperación ejecutada el 23/10/2026
 
-Gemini Embedding 2, 3072 dimensiones, Chroma persistente, coseno y k=3. Consultas españolas; corpus principalmente en inglés. Resultado real conservado en las salidas de `notebooks/proyecto.ipynb` y `outputs/retrieval_evaluation.json`.
+Gemini Embedding 2, 3072 dimensiones, Chroma persistente, coseno y k=3. Consultas españolas; corpus principalmente en inglés. Resultado real conservado en `outputs/retrieval_evaluation.json` y resumido en esta tabla. La evaluación se ha trasladado a `scripts/evaluate_retrieval.py`, fuera del notebook; no se ha repetido la API por este cambio.
 
 | Simulador | Consulta resumida | Ficha esperada | Posición | Filtro |
 | --- | --- | --- | --- | --- |

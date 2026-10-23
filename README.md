@@ -74,7 +74,7 @@ Las dependencias directas se fijan a las versiones encontradas en el entorno de 
 
 Abrir `notebooks/proyecto.ipynb` en VS Code con las extensiones Python y Jupyter, y elegir como kernel `.venv\Scripts\python.exe` de este proyecto. También se puede utilizar un servidor Jupyter ya instalado y seleccionar este entorno.
 
-Ejecutar primero las celdas de preparación: localizan el proyecto, cargan su `.env` sin mostrar claves y comprueban las importaciones. No realizan llamadas a Gemini. La sección de corpus construye y carga 75 documentos con metadatos, sin llamadas de API. Cada caso completo es un fragmento inicial. Las celdas siguientes generan o abren el índice local y ejecutan tres búsquedas de prueba. Todavía no existe un chat funcional.
+El notebook va directamente a configuración, carga de fichas, embeddings, Chroma y un ejemplo de búsqueda. Las pruebas están fuera del notebook. Cada ficha completa es un fragmento. Reabrir el mismo índice reutiliza los embeddings; ejecutar la búsqueda consume un embedding de consulta. Todavía no existe un chat funcional.
 
 ## Embeddings y recuperación: mismo enfoque de clase
 
@@ -82,17 +82,19 @@ Referencias: `../Notebooks/rag_profesor.ipynb` (celdas 40–45) y `clase3.ipynb`
 
 La lógica compartida está en `retrieval.py`. Contiene una adaptación pequeña porque la integración instalada (4.4.2) envía `task_type`, que [Embedding 2 no admite](https://ai.google.dev/gemini-api/docs/embeddings#task-types). Utilizamos los prefijos de búsqueda recomendados por Google, 3072 dimensiones y distancia coseno. Cada ficha completa es un fragmento, con solapamiento 0; no se vuelve a dividir por caracteres.
 
-La primera indexación envía las 75 fichas a Gemini. Ejecutarla otra vez con el mismo corpus y configuración reutiliza la colección, sin recalcular los embeddings del corpus. Si cambian los documentos, el modelo o el formato, se crea una colección distinta y se conserva la anterior. Cada búsqueda sí necesita un embedding de consulta; repetir la celda de pruebas ejecuta tres consultas más.
+La primera indexación envía las 75 fichas a Gemini. Ejecutarla otra vez con el mismo corpus y configuración reutiliza la colección, sin recalcular los embeddings del corpus. Si cambian los documentos, el modelo o el formato, se crea una colección distinta y se conserva la anterior. Cada búsqueda sí necesita un embedding de consulta; el ejemplo del notebook ejecuta una consulta; la evaluación externa ejecuta tres.
 
 `search(vectorstore, pregunta, simulador, k=3)` exige `lmu`, `iracing` o `acc` y aplica el filtro de metadatos antes de devolver resultados. El índice no garantiza que la respuesta esté en el corpus: incluso una consulta ajena tendrá vecinos; el agente deberá reconocer la falta de evidencia.
 
-Comprobación real del 23/10/2026: 75 fichas persistidas y reabiertas sin duplicados. La ficha esperada apareció en posición 1 para LMU y posición 2 para iRacing y ACC; los tres resultados de cada consulta pertenecían al simulador elegido. Resultados guardados en el notebook y `outputs/retrieval_evaluation.json` (local). Es una prueba inicial de tres casos, sin respuestas generadas por un LLM.
+Comprobación real del 23/10/2026: 75 fichas persistidas y reabiertas sin duplicados. La ficha esperada apareció en posición 1 para LMU y posición 2 para iRacing y ACC; los tres resultados de cada consulta pertenecían al simulador elegido. Resultados conservados en `docs/EVALUACION.md` y `outputs/retrieval_evaluation.json` (local). Es una prueba inicial de tres casos, sin respuestas generadas por un LLM.
 
-Pruebas locales sin API:
+Pruebas locales sin API (fuera del notebook):
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
+
+La evaluación real de tres consultas está en `scripts/evaluate_retrieval.py`; ejecutarla explícitamente consume API. No forma parte del recorrido del notebook.
 
 ## Diseño previsto
 
