@@ -2,7 +2,7 @@
 
 Proyecto de Carlos Peñalver para el módulo de IA Generativa del máster.
 
-**Estado: corpus preparado.** Ingeniero de boxes para **iRacing, ACC y Le Mans Ultimate**, con 75 fichas de tres fuentes elegidas por el alumno. El agente, la indexación, la memoria y la web siguen pendientes. Evaluaremos fidelidad documental; no se han probado ajustes en pista.
+**Estado: corpus indexado y recuperación inicial comprobada.** Ingeniero de boxes para **iRacing, ACC y Le Mans Ultimate**, con 75 fichas, Gemini Embedding 2 y Chroma persistente. El agente, la memoria y la web siguen pendientes. No se han probado ajustes en pista.
 
 ## Qué queremos construir
 
@@ -43,8 +43,9 @@ Proyecto/
 │   ├── corpus.json              # Fuentes anteriores en reserva
 │   ├── CASOS_PILOTO.md          # Tarea del alumno para elegir coches y consultas
 │   └── EVALUACION.md            # Preguntas y comparación con Gemini sin RAG
+├── retrieval.py                 # Embeddings, Chroma y filtro por simulador
 ├── scripts/build_corpus.py      # Constructor local de las 75 fichas
-├── tests/test_build_corpus.py   # Comprobación pequeña del parser
+├── tests/                       # Corpus y recuperación local sin llamadas API
 ├── data/corpus/                 # Originales, transcripciones y fichas; fuera de Git
 ├── data/chroma/                 # Índice generado; no se versiona
 └── outputs/                     # Resultados locales; no se versionan
@@ -65,7 +66,7 @@ Copy-Item .env.example .env
 
 Crear el entorno solo si no existe. Copiar `.env.example` solo si todavía no hay un `.env`, para conservar las credenciales locales.
 
-Completar `.env` con `GOOGLE_API_KEY` y los identificadores elegidos para `GEMINI_MODEL` y `GEMINI_EMBEDDING_MODEL`. Los dejamos vacíos hasta verificar disponibilidad y cuotas de la cuenta. No reutilizamos automáticamente el `.env` de clase.
+Completar `.env` con una `GOOGLE_API_KEY` válida y `GEMINI_EMBEDDING_MODEL=gemini-embedding-2`, el mismo modelo usado en clase. `GEMINI_MODEL` sigue pendiente para la siguiente fase. El `.env` de Proyecto tiene prioridad sobre las variables heredadas del sistema. No mostrar claves en las celdas ni en sus salidas.
 
 Las dependencias directas se fijan a las versiones encontradas en el entorno de clase; las transitivas todavía no están bloqueadas. Streamlit se añadirá al implementar la web.
 
@@ -73,7 +74,25 @@ Las dependencias directas se fijan a las versiones encontradas en el entorno de 
 
 Abrir `notebooks/proyecto.ipynb` en VS Code con las extensiones Python y Jupyter, y elegir como kernel `.venv\Scripts\python.exe` de este proyecto. También se puede utilizar un servidor Jupyter ya instalado y seleccionar este entorno.
 
-Ejecutar primero las celdas de preparación: localizan el proyecto, cargan su `.env` sin mostrar claves y comprueban las importaciones. No realizan llamadas a Gemini. La sección de corpus construye y carga 75 documentos con metadatos, sin llamadas de API. Cada caso completo es un fragmento inicial. La indexación y las secciones siguientes siguen pendientes; todavía no existe un chat funcional.
+Ejecutar primero las celdas de preparación: localizan el proyecto, cargan su `.env` sin mostrar claves y comprueban las importaciones. No realizan llamadas a Gemini. La sección de corpus construye y carga 75 documentos con metadatos, sin llamadas de API. Cada caso completo es un fragmento inicial. Las celdas siguientes generan o abren el índice local y ejecutan tres búsquedas de prueba. Todavía no existe un chat funcional.
+
+## Embeddings y recuperación: mismo enfoque de clase
+
+Referencias: `../Notebooks/rag_profesor.ipynb` (celdas 40–45) y `clase3.ipynb` (35–40). Usamos el cliente `GoogleGenerativeAIEmbeddings`, `Chroma.from_documents`, persistencia local y `similarity_search`.
+
+La lógica compartida está en `retrieval.py`. Contiene una adaptación pequeña porque la integración instalada (4.4.2) envía `task_type`, que [Embedding 2 no admite](https://ai.google.dev/gemini-api/docs/embeddings#task-types). Utilizamos los prefijos de búsqueda recomendados por Google, 3072 dimensiones y distancia coseno. Cada ficha completa es un fragmento, con solapamiento 0; no se vuelve a dividir por caracteres.
+
+La primera indexación envía las 75 fichas a Gemini. Ejecutarla otra vez con el mismo corpus y configuración reutiliza la colección, sin recalcular los embeddings del corpus. Si cambian los documentos, el modelo o el formato, se crea una colección distinta y se conserva la anterior. Cada búsqueda sí necesita un embedding de consulta; repetir la celda de pruebas ejecuta tres consultas más.
+
+`search(vectorstore, pregunta, simulador, k=3)` exige `lmu`, `iracing` o `acc` y aplica el filtro de metadatos antes de devolver resultados. El índice no garantiza que la respuesta esté en el corpus: incluso una consulta ajena tendrá vecinos; el agente deberá reconocer la falta de evidencia.
+
+Comprobación real del 23/10/2026: 75 fichas persistidas y reabiertas sin duplicados. La ficha esperada apareció en posición 1 para LMU y posición 2 para iRacing y ACC; los tres resultados de cada consulta pertenecían al simulador elegido. Resultados guardados en el notebook y `outputs/retrieval_evaluation.json` (local). Es una prueba inicial de tres casos, sin respuestas generadas por un LLM.
+
+Pruebas locales sin API:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
 
 ## Diseño previsto
 

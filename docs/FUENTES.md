@@ -8,7 +8,7 @@ Selección confirmada por el alumno el 23/10/2026: tres fuentes, una por simulad
 | IR_CHRIS_HAYE | [Chuleta de Chris Haye reproducida por SimRacingCockpit](https://simracingcockpit.gg/improving-your-car-setup-in-iracing/) | Transcripción visual de las celdas de la imagen; no se indexa el artículo completo | 20 |
 | ACC_DRIVER61 | [Driver61 ACC Setup Guide V1](https://driver61.com/wp-content/uploads/2021/04/Driver61-Assetto-Corsa-Competizione-Setup-Guide-V1.pdf) | Transcripción visual de una página larga, separando columnas, problemas y condiciones | 30 |
 
-**Resultado: 75 fichas documentales, todavía sin embeddings ni índice Chroma.** Hay tres fuentes, no 75 documentos originales. La imagen y la lámina PDF no se contabilizan artificialmente como decenas de páginas. El inventario activo es [corpus_mvp.json](corpus_mvp.json), con autor, procedencia, método, rutas y huellas SHA-256.
+**Resultado: 75 fichas documentales, indexadas con Gemini Embedding 2 en Chroma.** Hay tres fuentes, no 75 documentos originales. La imagen y la lámina PDF no se contabilizan artificialmente como decenas de páginas. El inventario activo es [corpus_mvp.json](corpus_mvp.json), con autor, procedencia, método, rutas y huellas SHA-256.
 
 ## Qué contiene cada ficha
 
@@ -56,7 +56,7 @@ Para volver a obtener los originales:
 2. iRacing: descargar la [imagen enlazada desde el artículo](https://simracingcockpit.gg/wp-content/uploads/2023/05/iracing-setup-cheat-sheet.jpg) y transcribir cada celda en un apartado Markdown `##`, conservando condiciones y alternativas.
 3. ACC: descargar el PDF y revisar visualmente sus zonas. El texto extraído directamente mezcla columnas: por eso cada celda se transcribió a un apartado `##` en lugar de usar esa extracción.
 
-La nueva obtención y la transcripción visual requieren revisión manual; no se promete reconstrucción automática idéntica desde una clonación vacía. Las huellas permiten comprobar las copias usadas en esta entrega.
+La nueva obtención y la transcripción visual requieren revisión manual; no se promete reconstrucción automática idéntica desde una clonación vacía. Las huellas permiten comprobar las copias usadas en esta entrega. La configuración y las comprobaciones de recuperación están en el README y el notebook.
 
 ## Material anterior en reserva
 

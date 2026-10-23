@@ -31,8 +31,9 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - [x] Seleccionar las tres fuentes del MVP y registrar procedencia, fecha, límites y huellas.
 - [x] Capturar 25 hojas de LMU y transcribir visualmente 20 celdas de iRacing y 30 de ACC; preparar JSONL y carga en notebook.
 - [x] Instalar y comprobar el entorno independiente.
-- [ ] Elegir modelos disponibles y probar una llamada controlada a Gemini.
-- [ ] Indexar corpus con Gemini Embeddings en ChromaDB y verificar recuperación.
+- [x] Elegir y utilizar Gemini Embedding 2, como en clase.
+- [ ] Elegir el modelo de generación y probar el LLM al implementar el agente.
+- [x] Indexar 75 fichas con Gemini Embedding 2 en Chroma; verificar persistencia y tres consultas filtradas.
 - [ ] Implementar LangGraph con recuperación en cada consulta.
 - [ ] Integrar y justificar el prompt final en README.
 - [ ] Implementar memoria y demostrar un seguimiento.
@@ -74,5 +75,15 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - 38 páginas del árbol público visitadas y 25 hojas capturadas; 50 fichas adicionales transcritas visualmente de las dos láminas. Total: 75 fichas con fuente, localizador y simulador.
 - Inventario activo en `docs/corpus_mvp.json`; constructor local y carga de documentos en el notebook. Las seis capturas previas quedan como reserva en `docs/corpus.json`.
 - Versión de juego y coche desconocidos; antigüedad y límites registrados. No hace falta probar reglajes para esta entrega: se evaluará respaldo documental, recuperación, citas y memoria.
-- Siguiente fase: elegir modelos Gemini disponibles, indexar en Chroma y comprobar recuperación antes de implementar el agente.
+- Fase siguiente completada: índice Chroma y tres búsquedas comprobadas; queda implementar el agente con un LLM de Gemini.
 - Tarea opcional del alumno: proponer una pregunta por simulador y un seguimiento. No necesita conocer la respuesta ni volver a jugar.
+
+## Índice y recuperación comprobados (23/10/2026)
+
+- Revisados `rag_profesor.ipynb` y `clase3.ipynb`. Mismo flujo: cliente de embeddings, `Chroma.from_documents`, persistencia y búsqueda por similitud.
+- Gemini Embedding 2, 3072 dimensiones, coseno, una ficha completa por fragmento, solapamiento 0. Adaptación para retirar `task_type` y aplicar los prefijos de búsqueda de Embedding 2.
+- Colecciones identificadas por corpus, modelo y formato: reabrir no duplica fichas ni recalcula el corpus. Las colecciones anteriores se conservan si cambia la configuración.
+- Notebook ejecutado de principio a fin: 75 fichas guardadas; reapertura comprobada. Tres consultas en español con ficha esperada en top 3 y sin mezcla de simuladores: LMU posición 1, iRacing y ACC posición 2.
+- Pruebas automáticas locales sin API para formato de petición, persistencia, reutilización, separación de corpus, filtros e inputs inválidos.
+- Uso real limitado a la indexación del corpus y tres consultas; la prueba inicial con la credencial heredada fue rechazada antes de copiar la clave autorizada de clase. No se generaron respuestas de chat. No se conoce facturación efectiva de la cuenta; no se activó ni modificó.
+- Siguiente trabajo: Gemini LLM, prompt y grafo LangGraph. No ampliar el corpus ni repetir consultas de API por rutina.

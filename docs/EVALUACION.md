@@ -1,6 +1,6 @@
 # Evaluación prevista
 
-Estado: diseño de pruebas; todavía no se han ejecutado ni hay respuestas documentadas. Los escenarios de piloto serán ficticios salvo que se indique una prueba real en el simulador.
+Estado: tres pruebas reales de recuperación completadas; aún no hay respuestas de un LLM ni evaluación del agente. Los escenarios de piloto serán ficticios salvo que se indique una prueba real en el simulador.
 
 ## Comparación frente a Gemini sin RAG
 
@@ -66,3 +66,15 @@ Antes de conectar Gemini: extracción no vacía, metadatos completos, indexació
 Al implementar el grafo: recuperación en cada turno, consulta sin contexto, corpus ausente, error de API, seguimiento, cambio de coche/simulador, recomendación no aplicada y aislamiento entre conversaciones. Usar dobles locales en pruebas automáticas; ejecutar las llamadas reales explícitamente.
 
 Antes de publicar: revisar que no hay secretos ni datos privados en archivos y salidas del notebook.
+
+## Recuperación ejecutada el 23/10/2026
+
+Gemini Embedding 2, 3072 dimensiones, Chroma persistente, coseno y k=3. Consultas españolas; corpus principalmente en inglés. Resultado real conservado en las salidas de `notebooks/proyecto.ipynb` y `outputs/retrieval_evaluation.json`.
+
+| Simulador | Consulta resumida | Ficha esperada | Posición | Filtro |
+| --- | --- | --- | --- | --- |
+| LMU | Sobreviraje al acelerar a la salida de curva lenta | LMU_USH_24 | 1 | Solo LMU |
+| iRacing | Bloqueo frecuente del neumático delantero al frenar | IR_CHRIS_HAYE_02 | 2 | Solo iRacing |
+| ACC | Incomodidad e inestabilidad al pasar por pianos | ACC_DRIVER61_18 | 2 | Solo ACC |
+
+Los tres casos recuperaron la ficha esperada entre los tres primeros; no siempre fue el primer resultado. Esta muestra no mide precisión global ni demuestra corrección de los reglajes. Las pruebas locales verifican persistencia, ausencia de duplicados y filtrado con vectores ficticios, sin consumir API; la relevancia semántica solo se ha comprobado en las tres consultas reales de la tabla. Falta evaluar respuestas, citas y memoria del agente.

@@ -18,3 +18,5 @@
 - Hacer las pruebas adecuadas a cada cambio. Al implementar recuperación y memoria, probar los límites con datos locales y añadir una comprobación pequeña de su comportamiento.
 
 - Corpus MVP cerrado por el alumno el 23/10/2026: LMU Ultimate Setup Hub, chuleta Chris Haye del artículo SimRacingCockpit y PDF ACC Driver61 V1. Inventario activo: docs/corpus_mvp.json. Las seis fuentes de docs/corpus.json son reserva. No ampliar fuentes ni exigir validación en pista: el alumno no dispone del simulador. Evaluar fidelidad a las guías, citas, recuperación y memoria, declarando antigüedad y versión desconocida. No bloquear explicaciones cualitativas por falta de coche o versión.
+
+- Indexación completada el 23/10/2026: Gemini Embedding 2 (3072 dimensiones), Chroma y tres consultas de recuperación. Patrón de rag_profesor.ipynb y clase3.ipynb, con adaptación y reutilización en retrieval.py. No repetir llamadas de API por rutina: reutilizar índice y salidas guardadas. El alumno autorizó copiar únicamente la clave de Notebooks/.env al .env local de Proyecto; nunca mostrarla ni versionarla. Proyecto/.env tiene prioridad sobre variables heredadas.
