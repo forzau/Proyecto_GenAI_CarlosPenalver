@@ -15,7 +15,7 @@ Mantener una conversación nueva por caso independiente; conservarla solo en los
 
 ## Primeras preguntas documentales de LMU
 
-El alumno solo ha jugado LMU y no recuerda síntomas concretos fiables. Estas preguntas son candidatas de evaluación propuestas para el proyecto: no son experiencias suyas ni resultados del agente. Podremos preparar criterios de corrección tras revisar los artículos; las tablas e imágenes siguen pendientes de comprobación.
+El alumno solo ha jugado LMU, principalmente GT3, y recuerda dificultad con el sobreviraje sin identificar coche, versión o fase de curva. Las preguntas L01–L05 son candidatas documentales propuestas para el proyecto; L06 utiliza su relato incompleto. No hay resultados del agente. Podremos preparar criterios de corrección tras revisar los artículos; las tablas e imágenes siguen pendientes de comprobación.
 
 | ID | Pregunta candidata | Fuente de partida y revisión necesaria |
 | --- | --- | --- |
@@ -23,7 +23,8 @@ El alumno solo ha jugado LMU y no recuerda síntomas concretos fiables. Estas pr
 | L02 | ¿Qué diferencia hay entre Traction Control, Power Cut y Slip Angle? | LMU03; revisar texto y capturas, sin inventar escalas para un coche no identificado |
 | L03 | Tras L02: «¿Cuál de esos controles debo consultar si quiero entender cuánto se reduce la potencia?» | LMU03; seguimiento documental para comprobar referencia al turno anterior |
 | L04 | ¿La explicación del ABS para LMGT3 se puede aplicar a cualquier categoría? | LMU04; revisar alcance y distinguir documentación disponible de inferencias |
-| L05 | ¿Qué diferencias de ajuste describe la guía entre sus dos LMP3? | LMU02; revisar texto e imágenes; no convertirlas en reglas para otras categorías |
+| L05 | ¿Qué diferencias de ajuste describe la guía entre sus dos LMP3? | LMU02; caso complementario, no prioritario para la experiencia GT3 del alumno; no extrapolar entre categorías |
+| L06 | «Recuerdo conducir GT3 en LMU: sobreviraban con facilidad y me costaba recuperarlos» | Relato histórico del alumno, no evidencia técnica: preguntar por coche, versión y fase relevante; no asumir causa, prescribir TC ni inventar datos. LMU03/LMU04 solo se consultarán según el contexto que llegue a aclararse |
 
 No habrá respuestas de referencia hasta contrastarlas con las fuentes. Estas preguntas permiten arrancar la validación de RAG y memoria sin rodar. Los escenarios de síntomas de la tabla siguiente se mantendrán como casos hipotéticos y se concretarán con la documentación aplicable.
 

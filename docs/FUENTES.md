@@ -43,7 +43,7 @@ Objetivo: al menos tres documentos sustanciales y unas 20 páginas equivalentes 
 
 ## Tarea del alumno en paralelo
 
-El alumno solo ha jugado LMU y no recuerda síntomas concretos fiables. En [CASOS_PILOTO.md](CASOS_PILOTO.md) queda registrado este contexto. Su tarea es indicar coches o categorías que recuerde y una o dos preguntas que le interesen. Los casos técnicos se construirán desde fuentes y se etiquetarán como hipotéticos; no dependemos de recuerdos para limpiar los documentos. Las respuestas de referencia se mantendrán fuera del corpus.
+El alumno solo ha jugado LMU, principalmente GT3, y recuerda sobreviraje difícil de recuperar sin más contexto confirmado. El relato está en [CASOS_PILOTO.md](CASOS_PILOTO.md). Su tarea opcional es recordar el modelo o marca del GT3, sin forzar detalles. Priorizar documentación aplicable a LMGT3; la guía LMP3 queda como complemento y no justifica ajustes para GT3. Los casos técnicos se construirán desde fuentes y se etiquetarán como hipotéticos; no dependemos de recuerdos para limpiar los documentos. Las respuestas de referencia se mantendrán fuera del corpus.
 
 ## Registro al incorporar cada documento
 

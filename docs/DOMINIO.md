@@ -8,7 +8,7 @@ Un piloto de simracing describe el comportamiento del coche y necesita saber qu�
 
 ## Experiencia disponible y orden de trabajo
 
-El alumno solo ha jugado LMU y no recuerda problemas concretos que pueda afirmar como reales. Empezaremos por consultas documentales de LMU y escenarios hipotéticos explícitos. iRacing y ACC siguen en el alcance previsto; se incorporarán a las pruebas según la evidencia disponible, sin exigir que el alumno haya jugado a ellos.
+El alumno solo ha jugado LMU, principalmente GT3, y recuerda sobreviraje frecuente y difícil de recuperar. Es una impresión histórica sin coche, versión ni condiciones identificados; no una medición ni una conclusión sobre la física actual. Empezaremos por consultas documentales de LMU, este relato incompleto y escenarios hipotéticos explícitos. iRacing y ACC siguen en el alcance previsto; se incorporarán a las pruebas según la evidencia disponible, sin exigir que el alumno haya jugado a ellos.
 
 El alumno puede evaluar claridad y utilidad de la conversación. La corrección técnica se revisará contra fuentes aplicables, y las mejoras de rendimiento requerirían pruebas en pista. No convertir una opinión de utilidad en validación de un setup.
 
