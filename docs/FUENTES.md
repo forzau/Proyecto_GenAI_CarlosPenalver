@@ -1,21 +1,49 @@
 # Fuentes y corpus
 
-## Candidatas para simracing
+## Dónde buscar y qué priorizar
 
-Enlaces consultados el 22/10/2026. Son candidatos, no documentos descargados, validados para una versión concreta ni indexados. Cubriremos iRacing, ACC y LMU con la profundidad que permita la evidencia; no mezclar sus parámetros.
+Revisión del 23/10/2026. Prioridad: documentación del desarrollador, manuales del coche elegido y cambios de versión. Las guías originales de especialistas son complementarias y deben contrastarse; foros y vídeos sirven para localizar problemas o explicaciones, no para convertir opiniones aisladas en reglas del agente.
 
-| ID | Fuente | Uso previsto y límites | Estado |
+### iRacing
+
+| ID | Fuente | Qué aprovechar | Estado y límites |
 | --- | --- | --- | --- |
-| IR01 | [iRacing: manuales oficiales](https://www.iracing.com/resources/user-manuals/) | Elegir manuales de los coches de demo y comprobar versión y parámetros disponibles | Catálogo localizado; documentos por elegir |
-| IR02 | [iRacing: guía de iniciación y setup](https://support.iracing.com/support/solutions/articles/31000168572) | Seleccionar secciones de comportamiento y método de prueba, excluyendo configuración gráfica y periféricos | Revisar secciones y enlaces a guías de setup |
-| ACC01 | [ACC: notas oficiales de física v1.9](https://assettocorsa.gg/wp-content/uploads/ACCv19-physics_notes.pdf) | Referencia histórica identificada por versión; contrastar con cambios posteriores antes de recomendar valores | Pendiente de extracción y contraste; no asumir vigencia actual |
-| LMU01 | [LMU: guía oficial](https://guide.lemansultimate.com/hc/en-gb) | Seleccionar artículos sobre vehículo, setup y condiciones; una portada no cuenta como documento sustancial | Artículos por elegir |
-| LMU02 | [LMU: guía oficial de setup LMP3](https://lemansultimate.com/lmp3-quick-setup-guide/) | Posible caso específico LMP3; no extrapolar a GT3 o Hypercar ni a otra versión | Revisar aplicabilidad antes de incorporarla |
-| GEN01 | Documento de fundamentos de dinámica y método de diagnóstico | Solo conceptos de aplicabilidad general revisada, sin convertir cifras de un simulador en universales | Fuente pendiente de selección |
+| IR01 | [Catálogo oficial de manuales de coches](https://www.iracing.com/resources/user-manuals/) | Manual del coche elegido: ajustes disponibles, funcionamiento y restricciones | Falta elegir coche; el catálogo no cuenta como documento del corpus |
+| IR02 | [Guía de iniciación alojada por soporte de iRacing](https://support.iracing.com/support/solutions/articles/31000168572) | Método para describir síntomas y enlaces a documentación de reglajes | Seleccionar secciones; excluir gráficos y periféricos |
+| IR03 | [Shock Tuning User Guide](https://s100.iracing.com/wp-content/uploads/2021/08/Shock-Tuning-User-Guide.pdf) | Amortiguadores, terminología y diagramas | Copia PDF local: 20 páginas brutas; revisión de contenido y aplicabilidad pendiente |
+| IR04 | [iRacing Car Setup Guide](https://ir-core-sites.iracing.com/members/pdfs/iRacing_Car_Setup_Guide_20100910.pdf) | Referencia histórica y método de ajuste | Enlace verificado; documento de 2010, no tomar sus valores como actuales |
 
-Objetivo: al menos tres documentos sustanciales y unas 20 páginas equivalentes, con contenido útil para los tres simuladores y al menos un caso demostrable por simulador. El mínimo de volumen global no garantiza cobertura suficiente de cada uno: registrar también las lagunas.
+### Assetto Corsa Competizione
 
-No contar una página de catálogo ni unas notas de versión breves como un manual completo. Guardar texto limpio en `.md` o `.txt`, o PDF con texto seleccionable. Revisar tablas e imágenes que contengan información necesaria antes de usarlas para responder.
+| ID | Fuente | Qué aprovechar | Estado y límites |
+| --- | --- | --- | --- |
+| ACC01 | [Notas oficiales de física v1.9](https://assettocorsa.gg/wp-content/uploads/ACCv19-physics_notes.pdf) | Cambios documentados de neumáticos y física de esa versión | Copia PDF local: 8 páginas brutas; referencia histórica, sin validación para otra versión |
+| ACC02 | [Soporte de 505 Games: changelog v1.10.4 para PC](https://support.505games.com/support/solutions/articles/150000217831-assetto-corsa-competizione-changelog-v1-10-4-2025-dec-22-pc-) | Complemento de versión; seguir la cadena de cambios que afecten al caso | No es un manual de setup ni demuestra por sí solo que todos los valores de v1.9 sigan vigentes |
+| ACC03 | [Coach Dave: guía de subviraje y sobreviraje](https://coachdaveacademy.com/tutorials/how-to-fix-oversteer-and-understeer-in-acc/) | Explicación original de un especialista, candidata para conceptos y relaciones entre ajustes | Complementaria, publicada en 2020; contrastar antes de incorporarla; no requiere comprar setups |
+
+Para ACC falta una guía de reglajes aplicable a la versión y coche de demo. Las notas v1.9 y un changelog de contenido no cierran esa laguna. Priorizar documentos técnicos del desarrollador y explicaciones del propio equipo de físicas; si se usa un vídeo, registrar autor, fecha y marcas de tiempo y revisar su transcripción. No usar una transcripción generada sin verificar.
+
+### Le Mans Ultimate
+
+| ID | Fuente | Qué aprovechar | Estado y límites |
+| --- | --- | --- | --- |
+| LMU01 | [Guía oficial: sección On Track](https://guide.lemansultimate.com/hc/en-gb/sections/13152333627151-On-Track) | Navegación hacia artículos concretos de controles y comportamiento | No indexar el catálogo como contenido sustancial |
+| LMU02 | [LMP3 Quick Setup Guide](https://lemansultimate.com/lmp3-quick-setup-guide/) | Ajustes de los LMP3 descritos por el desarrollador | Copia HTML local; depende de coches, capturas y versión; no extrapolar a GT3 o Hypercar |
+| LMU03 | [Configuración del control de tracción](https://guide.lemansultimate.com/hc/en-gb/articles/13182869047311-How-do-I-configure-my-traction-control-in-Le-Mans-Ultimate) | Función de los controles y cómo localizarlos | Copia HTML local; limpiar navegación y revisar capturas |
+| LMU04 | [ABS para LMGT3](https://guide.lemansultimate.com/hc/en-gb/articles/13211078435983-ABS-Anti-Lock-Braking-System-for-LMGT3-Cars) | Alcance por categoría y explicación de mapas | Copia HTML local; la tabla de mapas es una imagen: revisión y transcripción visual pendientes |
+| LMU05 | [MFD y datos que muestra](https://guide.lemansultimate.com/hc/en-gb/articles/13202210967055-Understanding-the-MFD-Multi-Function-Display) | Qué información puede aportar el piloto al diagnóstico | Enlace localizado; no implica que el agente lea telemetría |
+
+## Copias locales e inventario
+
+Se han guardado cinco originales en `data/corpus/pendientes/`: IR03, ACC01, LMU02, LMU03 y LMU04. Hay dos PDF (28 páginas brutas en total) y tres artículos HTML. El [inventario de capturas](corpus.json) registra procedencia, autor, formato, ruta, tamaño, fecha, SHA-256 y límites conocidos. Las copias originales permanecen fuera de Git; el inventario se versiona.
+
+**No están limpios, aprobados para responder ni indexados.** `pendientes/` no deberá entrar en la indexación hasta revisar cada fuente y su aplicabilidad. El volumen bruto no equivale a páginas útiles; tablas e imágenes pueden contener información que no aparece en la extracción de texto.
+
+Objetivo: al menos tres documentos sustanciales y unas 20 páginas equivalentes útiles, con casos respaldados de los tres simuladores. La selección final tendrá que añadir el manual del coche de iRacing y completar ACC según los casos elegidos. No comprar contenido ni recopilar cientos de páginas para empezar.
+
+## Tarea del alumno en paralelo
+
+Completar [CASOS_PILOTO.md](CASOS_PILOTO.md) con un coche conocido y un problema por simulador. Si no dispone de un simulador, indicarlo; no inventar observaciones reales. Los casos guían la selección del corpus y se mantendrán separados de los documentos de conocimiento para no filtrar respuestas a la evaluación.
 
 ## Registro al incorporar cada documento
 

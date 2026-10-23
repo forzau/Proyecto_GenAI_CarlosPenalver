@@ -27,7 +27,9 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - [x] Preparar notebook de trabajo, borrador del prompt y plan de evaluación.
 - [x] Confirmar dominio, usuario objetivo y alcance de diagnóstico para iRacing, ACC y LMU.
 - [ ] Concretar coches, versiones y casos de demo según el corpus disponible.
+- [x] Localizar fuentes oficiales y capturar cinco originales con inventario de procedencia (23/10/2026).
 - [ ] Seleccionar corpus suficiente; registrar autor, origen, fecha y permisos.
+- [ ] Limpiar texto, revisar tablas/imágenes y comprobar versión y cobertura de cada documento antes de indexar.
 - [x] Instalar y comprobar el entorno independiente.
 - [ ] Elegir modelos disponibles y probar una llamada controlada a Gemini.
 - [ ] Indexar corpus con Gemini Embeddings en ChromaDB y verificar recuperación.
@@ -65,3 +67,10 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - Estructura y sintaxis del notebook, enlaces locales y exclusiones de Git comprobados.
 - Revisados los archivos preparados para Git: no incluyen entorno, corpus, indice ni claves reconocibles.
 - No se ha validado aun RAG, memoria, calidad de respuestas ni la web: su implementacion queda pendiente.
+
+## Avance de fuentes (23/10/2026)
+
+- Cinco copias originales locales e inventario en `docs/corpus.json`: dos PDF con 28 páginas brutas y tres HTML.
+- Limpieza, revisión visual, aplicabilidad y suficiencia útil pendientes; todavía no existe un índice Chroma.
+- Prioridad siguiente: casos del piloto, manual del coche de iRacing y documentación de ACC aplicable a la demo.
+- Tarea paralela del alumno: completar `docs/CASOS_PILOTO.md`.
