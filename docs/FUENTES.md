@@ -32,6 +32,7 @@ Para ACC falta una guía de reglajes aplicable a la versión y coche de demo. La
 | LMU03 | [Configuración del control de tracción](https://guide.lemansultimate.com/hc/en-gb/articles/13182869047311-How-do-I-configure-my-traction-control-in-Le-Mans-Ultimate) | Función de los controles y cómo localizarlos | Copia HTML local; limpiar navegación y revisar capturas |
 | LMU04 | [ABS para LMGT3](https://guide.lemansultimate.com/hc/en-gb/articles/13211078435983-ABS-Anti-Lock-Braking-System-for-LMGT3-Cars) | Alcance por categoría y explicación de mapas | Copia HTML local; la tabla de mapas es una imagen: revisión y transcripción visual pendientes |
 | LMU05 | [MFD y datos que muestra](https://guide.lemansultimate.com/hc/en-gb/articles/13202210967055-Understanding-the-MFD-Multi-Function-Display) | Qué información puede aportar el piloto al diagnóstico | Enlace localizado; no implica que el agente lea telemetría |
+| LMU06 | [Ultimate Setup Hub: Race Engineer](https://ultimatesetuphub.com/race-engineer) | Árbol comunitario de diagnóstico por síntoma, fase y velocidad | Dos hojas revisadas en navegador; [evaluación de extracción](REVISION_USH.md). Candidata complementaria, sin copia en el corpus ni validación de recomendaciones o versión |
 
 ## Copias locales e inventario
 

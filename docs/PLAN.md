@@ -84,3 +84,10 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - Corpus actual: seis copias originales, tres PDF con 50 páginas brutas y tres HTML. Ninguna está indexada; IR04 no está aprobada íntegramente.
 - La tabla final de IR04 no devuelve texto útil con pypdf y queda excluida de una primera indexación sin transcripción revisada.
 - Ferrari GT3 registrado como experiencia del alumno; modelo exacto pendiente y estabilidad anotada como impresión personal.
+
+## Fuente comunitaria propuesta: Ultimate Setup Hub (23/10/2026)
+
+- Inspeccionadas dos hojas públicas de sobreviraje y el historial del sitio; evaluación en `docs/REVISION_USH.md`.
+- Candidata para extracción piloto por síntoma, fase y velocidad, conservando supuestos y procedencia.
+- Pendientes extracción reproducible, condiciones de reutilización y contraste técnico; sin nuevas copias ni indexación.
+- Tarea paralela opcional del alumno: recorrer una de las dos rutas y señalar qué explicación le resulta útil o poco clara para adaptar el lenguaje del asistente.
