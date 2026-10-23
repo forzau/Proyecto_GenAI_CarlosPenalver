@@ -3,6 +3,7 @@
 - Proyecto de Carlos Peñalver para el módulo de IA Generativa del máster.
 - Trabajar en español. Priorizar que el alumno pueda explicar cada decisión.
 - En cada sesión de trabajo, proponer cuando sea posible una tarea concreta que el alumno pueda hacer en paralelo. Explicar para qué sirve y continuar las tareas independientes mientras la realiza.
+- El alumno solo ha jugado LMU y no recuerda síntomas concretos fiables. No exigir experiencias en iRacing/ACC ni inventar observaciones suyas. Empezar la validación documental por LMU y usar escenarios hipotéticos explícitos; su experiencia sirve para valorar claridad y utilidad.
 - Esta carpeta es la raíz del repositorio. `../Notebooks/` contiene referencias de clase: no modificar ni copiar su entorno o sus credenciales.
 - Leer README.md y docs/PLAN.md antes de desarrollar. Actualizar el estado al completar entregables.
 - Dominio confirmado: ingeniero de boxes para simracing. El diseño cubrirá diagnóstico general e iRacing, Assetto Corsa Competizione (ACC) y Le Mans Ultimate (LMU); la cobertura demostrable depende del corpus. No asumir todos los coches o versiones.

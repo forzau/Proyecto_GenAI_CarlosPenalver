@@ -1,25 +1,27 @@
-# Casos del piloto para elegir el corpus
+# Contexto del alumno y preguntas para la demo
 
-Tarea del alumno en paralelo a la búsqueda y preparación de fuentes. No hace falta rodar ahora ni conocer todos los valores: un caso que recuerdes sirve para empezar. Escribir «desconocido» cuando falte información y distinguir recuerdos, pruebas realizadas y escenarios ficticios.
+## Información confirmada el 23/10/2026
 
-## Primer paso: elegir coches y síntomas
+| Simulador | Experiencia del alumno | Observaciones fiables disponibles |
+| --- | --- | --- |
+| iRacing | No ha jugado | No hay experiencias propias que registrar |
+| ACC | No ha jugado | No hay experiencias propias que registrar |
+| LMU | Ha jugado; coches o categorías pendientes de concretar | No recuerda síntomas concretos como para afirmarlos |
 
-| Simulador | Coche conocido | Circuito o curva | Fase: entrada/mitad/salida | Síntoma en tus palabras |
-| --- | --- | --- | --- | --- |
-| iRacing | Pendiente | Pendiente | Pendiente | Pendiente |
-| ACC | Pendiente | Pendiente | Pendiente | Pendiente |
-| LMU | Pendiente | Pendiente | Pendiente | Pendiente |
+Esta situación no bloquea el proyecto: empezaremos con consultas y escenarios basados en documentación. No se atribuirán al alumno pruebas, cambios o resultados que no haya realizado.
 
-Si no usas alguno de los tres, indícalo. Elegiremos un escenario documental de demo para ese simulador sin presentarlo como una experiencia real tuya.
+## Tarea en paralelo
 
-## Segundo paso, si tienes los datos
+Indicar, si lo recuerda, qué coches o categorías ha conducido en LMU y escribir una o dos preguntas que le gustaría hacer a un ingeniero antes de salir a pista. No necesita conocer las respuestas ni recordar una incidencia. Si no recuerda el coche, basta con el tipo de consulta que le resulte interesante.
 
-Para cada caso, añadir versión y plataforma del juego, seco/mojado, temperaturas, combustible, neumáticos, si las mediciones son en frío o caliente y restricciones de setup fijo/abierto. Anotar cualquier cambio que aplicaste realmente y qué notaste después; separar lo que pensabas probar de lo que hiciste.
+Más adelante podrá probar la conversación del asistente y valorar si entiende la explicación, si las preguntas de contexto tienen sentido y si la respuesta le ayuda a decidir qué información consultar. Esta valoración no equivale a validar técnicamente el reglaje.
 
-## Preguntas para evaluar al agente
+## Cómo construiremos las pruebas
 
-Escribir cinco consultas que le harías a un ingeniero. Incluir una continuación del tipo «he aplicado el cambio y ahora noto…». No escribir todavía una respuesta esperada si no la has contrastado.
+- Las preguntas de conocimiento partirán de fuentes identificadas y tendrán criterios de revisión documental.
+- Los escenarios de diagnóstico y seguimiento serán hipotéticos y se etiquetarán así, sin presentarlos como vueltas reales.
+- Las respuestas del agente se guardarán únicamente después de ejecutarlo; no se inventarán resultados para completar la entrega.
+- No se afirmará una mejora de rendimiento sin una prueba real comparable.
+- Las respuestas de referencia quedan fuera del corpus. Gemini sin RAG y el agente recibirán el mismo contexto de usuario.
 
-## Cómo lo utilizaremos
-
-Tus casos determinan qué manuales y secciones merece la pena incorporar. Quedan fuera del corpus de respuestas de referencia: se facilitará el mismo contexto del piloto tanto a Gemini sin RAG como al agente con RAG.
+Los primeros candidatos de preguntas sobre LMU están en [EVALUACION.md](EVALUACION.md). La elección de coches no bloquea la limpieza de los documentos ya disponibles.

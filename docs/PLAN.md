@@ -12,7 +12,7 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 
 | Día | Trabajo | Evidencia para darlo por terminado |
 | --- | --- | --- |
-| 1 | Seleccionar corpus de los tres simuladores y casos de demo | Fuentes, versiones y cobertura documentadas; entorno comprobado |
+| 1 | Seleccionar corpus y casos documentales, empezando por LMU y ampliando a los otros dos simuladores | Fuentes, versiones y cobertura documentadas; no requiere recuerdos de incidencias del alumno |
 | 2 | Cargar, segmentar e indexar documentos | Chroma persistente; metadatos de simulador/coche/versión y filtros revisados antes del agente |
 | 3 | Prompt y grafo LangGraph con Gemini | Pregunta → recuperación → generación; respuesta sustentada en fragmentos |
 | 4 | Memoria y notebook interactivo | Seguimiento de cambios confirmados, revisión al cambiar de coche/simulador y aislamiento entre conversaciones |
@@ -72,5 +72,7 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 
 - Cinco copias originales locales e inventario en `docs/corpus.json`: dos PDF con 28 páginas brutas y tres HTML.
 - Limpieza, revisión visual, aplicabilidad y suficiencia útil pendientes; todavía no existe un índice Chroma.
-- Prioridad siguiente: casos del piloto, manual del coche de iRacing y documentación de ACC aplicable a la demo.
-- Tarea paralela del alumno: completar `docs/CASOS_PILOTO.md`.
+- Prioridad siguiente, ajustada al contexto del alumno: limpiar y revisar LMU primero, preparar preguntas documentales y después completar manuales de iRacing y documentación de ACC.
+- El alumno solo ha jugado LMU y no recuerda síntomas concretos fiables. Esto no bloquea la preparación del corpus ni las pruebas con escenarios hipotéticos explícitos.
+- Tarea paralela del alumno: indicar coches o categorías de LMU si los recuerda y una o dos preguntas de interés en `docs/CASOS_PILOTO.md` o en el chat.
+- Si falta evidencia suficiente para especialización, valorar con el alumno un experto en fundamentos generales de simracing; no cambiar de alcance automáticamente.

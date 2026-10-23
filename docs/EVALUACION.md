@@ -13,6 +13,20 @@ La memoria debe estar disponible en ambas variantes para evaluar el efecto de RA
 
 Mantener una conversación nueva por caso independiente; conservarla solo en los seguimientos. Revisar manualmente las respuestas y repetir los fallos dudosos. No indexar las respuestas de referencia de evaluación como parte del corpus.
 
+## Primeras preguntas documentales de LMU
+
+El alumno solo ha jugado LMU y no recuerda síntomas concretos fiables. Estas preguntas son candidatas de evaluación propuestas para el proyecto: no son experiencias suyas ni resultados del agente. Podremos preparar criterios de corrección tras revisar los artículos; las tablas e imágenes siguen pendientes de comprobación.
+
+| ID | Pregunta candidata | Fuente de partida y revisión necesaria |
+| --- | --- | --- |
+| L01 | ¿El control de tracción se configura como una ayuda global o dentro del coche en LMU? | LMU03; verificar explicación y límites de aplicabilidad |
+| L02 | ¿Qué diferencia hay entre Traction Control, Power Cut y Slip Angle? | LMU03; revisar texto y capturas, sin inventar escalas para un coche no identificado |
+| L03 | Tras L02: «¿Cuál de esos controles debo consultar si quiero entender cuánto se reduce la potencia?» | LMU03; seguimiento documental para comprobar referencia al turno anterior |
+| L04 | ¿La explicación del ABS para LMGT3 se puede aplicar a cualquier categoría? | LMU04; revisar alcance y distinguir documentación disponible de inferencias |
+| L05 | ¿Qué diferencias de ajuste describe la guía entre sus dos LMP3? | LMU02; revisar texto e imágenes; no convertirlas en reglas para otras categorías |
+
+No habrá respuestas de referencia hasta contrastarlas con las fuentes. Estas preguntas permiten arrancar la validación de RAG y memoria sin rodar. Los escenarios de síntomas de la tabla siguiente se mantendrán como casos hipotéticos y se concretarán con la documentación aplicable.
+
 ## Casos iniciales
 
 Adaptar coche, versión y condiciones al corpus final. Las expectativas son criterios de revisión, no recomendaciones técnicas ni respuestas ya verificadas.

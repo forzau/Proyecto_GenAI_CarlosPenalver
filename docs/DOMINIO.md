@@ -6,6 +6,14 @@ Dominio confirmado por el alumno el 22/10/2026. El diseño cubrirá diagnóstico
 
 Un piloto de simracing describe el comportamiento del coche y necesita saber qué información falta, qué hipótesis considerar y qué cambio merece probar. El asistente debe explicar la recomendación con fuentes y continuar la sesión cuando el piloto comunica el resultado.
 
+## Experiencia disponible y orden de trabajo
+
+El alumno solo ha jugado LMU y no recuerda problemas concretos que pueda afirmar como reales. Empezaremos por consultas documentales de LMU y escenarios hipotéticos explícitos. iRacing y ACC siguen en el alcance previsto; se incorporarán a las pruebas según la evidencia disponible, sin exigir que el alumno haya jugado a ellos.
+
+El alumno puede evaluar claridad y utilidad de la conversación. La corrección técnica se revisará contra fuentes aplicables, y las mejoras de rendimiento requerirían pruebas en pista. No convertir una opinión de utilidad en validación de un setup.
+
+Si la cobertura especializada resulta insuficiente, la alternativa a valorar será un experto en fundamentos generales de simracing con RAG, manteniendo un dominio definido para la entrega. No se cambia automáticamente a un chatbot de cualquier tema ni se reutilizan fuentes específicas como universales. Esta alternativa queda pendiente de decidir si aparece esa limitación.
+
 ## Alcance de una semana
 
 - Interpretar subviraje, sobreviraje, inestabilidad en frenada y pérdida de tracción, considerando entrada, mitad y salida de curva.
@@ -56,5 +64,5 @@ Los diálogos de prueba serán escenarios ficticios identificados como tales. La
 ## Decisiones pendientes
 
 - Seleccionar documentos sustanciales de los tres simuladores y registrar sus versiones.
-- Elegir los coches de demo según documentación disponible y experiencia del alumno.
+- Elegir los coches de demo según documentación disponible; aprovechar la experiencia del alumno en LMU sin exigir experiencias en los otros simuladores.
 - Confirmar fecha y hora exactas de entrega y cuota o presupuesto de Gemini para las pruebas.
