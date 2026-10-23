@@ -3,7 +3,7 @@
 - Proyecto de Carlos Peñalver para el módulo de IA Generativa del máster.
 - Trabajar en español. Priorizar que el alumno pueda explicar cada decisión.
 - En cada sesión de trabajo, proponer cuando sea posible una tarea concreta que el alumno pueda hacer en paralelo. Explicar para qué sirve y continuar las tareas independientes mientras la realiza.
-- El alumno solo ha jugado LMU, principalmente GT3. Recuerda sobreviraje frecuente y difícil de recuperar: es una impresión histórica, sin coche, versión, fase de curva ni mediciones confirmados. No atribuirlo a la física actual ni inventar causas. No exigir experiencia en iRacing/ACC. Empezar la validación documental por LMU y distinguir recuerdos de escenarios hipotéticos.
+- El alumno solo ha jugado LMU, principalmente GT3 Ferrari, modelo exacto pendiente. Recuerda el Ferrari como más estable para empezar y otros coches difíciles, con sobreviraje frecuente y difícil de recuperar: son impresiones históricas, sin versión, fase de curva ni mediciones confirmadas. No atribuirlo a la física actual ni inventar causas. No exigir experiencia en iRacing/ACC. Empezar la validación documental por LMU y distinguir recuerdos de escenarios hipotéticos.
 - Esta carpeta es la raíz del repositorio. `../Notebooks/` contiene referencias de clase: no modificar ni copiar su entorno o sus credenciales.
 - Leer README.md y docs/PLAN.md antes de desarrollar. Actualizar el estado al completar entregables.
 - Dominio confirmado: ingeniero de boxes para simracing. El diseño cubrirá diagnóstico general e iRacing, Assetto Corsa Competizione (ACC) y Le Mans Ultimate (LMU); la cobertura demostrable depende del corpus. No asumir todos los coches o versiones.

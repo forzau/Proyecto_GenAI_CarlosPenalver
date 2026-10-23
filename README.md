@@ -21,7 +21,7 @@ La utilidad frente a Gemini sin RAG es una hipótesis que vamos a evaluar: dispo
 - README y presentación oral de 5–10 minutos con demo.
 - Bonus previsto: interfaz Streamlit y, si llegamos, despliegue público.
 
-Hay cinco copias originales en `data/corpus/pendientes/`, con procedencia en [docs/corpus.json](docs/corpus.json). Aún requieren limpieza y revisión antes de indexar. El [contexto del alumno](docs/CASOS_PILOTO.md) y preguntas basadas en fuentes guiarán la selección final. Empezaremos las pruebas por LMU; no se requieren recuerdos de incidencias ni experiencia en los otros simuladores.
+Hay seis copias originales en `data/corpus/pendientes/`, con procedencia en [docs/corpus.json](docs/corpus.json). Aún requieren limpieza y revisión antes de indexar. El [contexto del alumno](docs/CASOS_PILOTO.md) y preguntas basadas en fuentes guiarán la selección final. Empezaremos las pruebas por LMU; no se requieren recuerdos de incidencias ni experiencia en los otros simuladores.
 
 El [plan y la lista de comprobación](docs/PLAN.md) recogen el enunciado local y una distribución de siete días. La fecha exacta de entrega sigue pendiente de confirmar.
 
@@ -39,7 +39,7 @@ Proyecto/
 │   ├── PLAN.md                  # Pasos, evidencias y demo
 │   ├── DOMINIO.md               # Alcance y utilidad que comprobar
 │   ├── FUENTES.md               # Fuentes priorizadas, límites y referencias de clase
-│   ├── corpus.json              # Inventario de cinco copias originales locales
+│   ├── corpus.json              # Inventario de seis copias originales locales
 │   ├── CASOS_PILOTO.md          # Tarea del alumno para elegir coches y consultas
 │   └── EVALUACION.md            # Preguntas y comparación con Gemini sin RAG
 ├── data/corpus/                 # Documentos locales; no se versionan

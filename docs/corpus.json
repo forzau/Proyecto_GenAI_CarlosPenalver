@@ -93,5 +93,26 @@
     "pages": null,
     "status": "captured_pending_review",
     "redistribution": "No verificada; copia local excluida de Git."
+  },
+  {
+    "id": "IR04",
+    "title": "iRacing Car Setup Guide",
+    "author": "iRacing",
+    "simulator": "iracing",
+    "scope": "Referencia histórica; priorizar método y terminología, sin extrapolar ajustes a LMU",
+    "document_version": "Creación del PDF: 10/09/2010; revisión posterior no verificada",
+    "game_version": null,
+    "url": "https://ir-core-sites.iracing.com/members/pdfs/iRacing_Car_Setup_Guide_20100910.pdf",
+    "format": "pdf",
+    "local_path": "data/corpus/pendientes/iracing_car_setup_20100910.pdf",
+    "captured_at_utc": "2026-10-23T16:39:45+00:00",
+    "sha256": "fa949bb3f2c12afb81845b28abaf06630e7d9259a973448581fc35e50cca531f",
+    "bytes": 424334,
+    "pages": 22,
+    "status": "reviewed_historical_reference",
+    "review_note": "Revisión inicial, no aprobación completa para indexar. Páginas 2, 3 y 22 comprobadas visualmente. Priorizar Important Points y Definitions; valores, recetas y otras secciones requieren contraste. Mantener el origen iRacing, sin etiquetar el documento entero como general.",
+    "extraction_note": "La página 22 es una tabla visual y no devuelve contenido útil con pypdf. La extracción del entorno del proyecto avisa de fuentes CFF sin fontTools; revisar glifos y no asumir extracción completa.",
+    "review_path": "docs/REVISION_IR04.md",
+    "redistribution": "No verificada; copia local excluida de Git."
   }
 ]

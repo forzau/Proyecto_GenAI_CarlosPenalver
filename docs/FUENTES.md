@@ -11,7 +11,7 @@ Revisión del 23/10/2026. Prioridad: documentación del desarrollador, manuales 
 | IR01 | [Catálogo oficial de manuales de coches](https://www.iracing.com/resources/user-manuals/) | Manual del coche elegido: ajustes disponibles, funcionamiento y restricciones | Falta elegir coche; el catálogo no cuenta como documento del corpus |
 | IR02 | [Guía de iniciación alojada por soporte de iRacing](https://support.iracing.com/support/solutions/articles/31000168572) | Método para describir síntomas y enlaces a documentación de reglajes | Seleccionar secciones; excluir gráficos y periféricos |
 | IR03 | [Shock Tuning User Guide](https://s100.iracing.com/wp-content/uploads/2021/08/Shock-Tuning-User-Guide.pdf) | Amortiguadores, terminología y diagramas | Copia PDF local: 20 páginas brutas; revisión de contenido y aplicabilidad pendiente |
-| IR04 | [iRacing Car Setup Guide](https://ir-core-sites.iracing.com/members/pdfs/iRacing_Car_Setup_Guide_20100910.pdf) | Referencia histórica y método de ajuste | Enlace verificado; documento de 2010, no tomar sus valores como actuales |
+| IR04 | [iRacing Car Setup Guide](https://ir-core-sites.iracing.com/members/pdfs/iRacing_Car_Setup_Guide_20100910.pdf) | Método y terminología como candidatos iniciales | Copia local de 22 páginas; creación en 2010 confirmada en metadatos. [Revisión parcial](REVISION_IR04.md); no aprobada íntegramente ni para ajustes actuales |
 
 ### Assetto Corsa Competizione
 
@@ -35,7 +35,7 @@ Para ACC falta una guía de reglajes aplicable a la versión y coche de demo. La
 
 ## Copias locales e inventario
 
-Se han guardado cinco originales en `data/corpus/pendientes/`: IR03, ACC01, LMU02, LMU03 y LMU04. Hay dos PDF (28 páginas brutas en total) y tres artículos HTML. El [inventario de capturas](corpus.json) registra procedencia, autor, formato, ruta, tamaño, fecha, SHA-256 y límites conocidos. Las copias originales permanecen fuera de Git; el inventario se versiona.
+Se han guardado seis originales en `data/corpus/pendientes/`: IR03, IR04, ACC01, LMU02, LMU03 y LMU04. Hay tres PDF (50 páginas brutas en total) y tres artículos HTML. IR04 tiene una revisión inicial documentada; los demás siguen pendientes de revisión. El [inventario de capturas](corpus.json) registra procedencia, autor, formato, ruta, tamaño, fecha, SHA-256 y límites conocidos. Las copias originales permanecen fuera de Git; el inventario se versiona.
 
 **No están limpios, aprobados para responder ni indexados.** `pendientes/` no deberá entrar en la indexación hasta revisar cada fuente y su aplicabilidad. El volumen bruto no equivale a páginas útiles; tablas e imágenes pueden contener información que no aparece en la extracción de texto.
 
@@ -43,7 +43,7 @@ Objetivo: al menos tres documentos sustanciales y unas 20 páginas equivalentes 
 
 ## Tarea del alumno en paralelo
 
-El alumno solo ha jugado LMU, principalmente GT3, y recuerda sobreviraje difícil de recuperar sin más contexto confirmado. El relato está en [CASOS_PILOTO.md](CASOS_PILOTO.md). Su tarea opcional es recordar el modelo o marca del GT3, sin forzar detalles. Priorizar documentación aplicable a LMGT3; la guía LMP3 queda como complemento y no justifica ajustes para GT3. Los casos técnicos se construirán desde fuentes y se etiquetarán como hipotéticos; no dependemos de recuerdos para limpiar los documentos. Las respuestas de referencia se mantendrán fuera del corpus.
+El alumno solo ha jugado LMU, principalmente GT3, y recuerda sobreviraje difícil de recuperar sin más contexto confirmado. El relato está en [CASOS_PILOTO.md](CASOS_PILOTO.md). Ha identificado Ferrari como marca y recuerda que le resultaba más estable que los otros coches al empezar. Es su impresión histórica, no una clasificación objetiva. Su tarea opcional es precisar el modelo del Ferrari si lo recuerda. Priorizar documentación aplicable a LMGT3; la guía LMP3 queda como complemento y no justifica ajustes para GT3. Los casos técnicos se construirán desde fuentes y se etiquetarán como hipotéticos; no dependemos de recuerdos para limpiar los documentos. Las respuestas de referencia se mantendrán fuera del corpus.
 
 ## Registro al incorporar cada documento
 

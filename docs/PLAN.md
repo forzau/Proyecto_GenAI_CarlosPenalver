@@ -73,7 +73,14 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - Cinco copias originales locales e inventario en `docs/corpus.json`: dos PDF con 28 páginas brutas y tres HTML.
 - Limpieza, revisión visual, aplicabilidad y suficiencia útil pendientes; todavía no existe un índice Chroma.
 - Prioridad siguiente, ajustada al contexto del alumno: limpiar y revisar LMU primero, preparar preguntas documentales y después completar manuales de iRacing y documentación de ACC.
-- El alumno solo ha jugado LMU, principalmente GT3. Recuerda sobreviraje frecuente y difícil de recuperar; coche, versión y fase desconocidos. El relato se usará para probar si el agente pide contexto sin inventar causas.
+- El alumno solo ha jugado LMU, principalmente un Ferrari GT3 (modelo exacto pendiente), que recuerda como más estable para empezar. Recuerda dificultad con el sobreviraje; versión y fase desconocidas. El relato se usará para probar si el agente pide contexto sin inventar causas.
 - Priorizar fuentes aplicables a LMGT3; mantener la guía LMP3 como complemento, sin extrapolar sus ajustes.
-- Tarea paralela opcional del alumno: indicar el modelo o marca del GT3 si lo recuerda, sin necesidad de volver a jugar.
+- Tarea paralela opcional del alumno: precisar el modelo del Ferrari GT3 si lo recuerda, sin necesidad de volver a jugar.
 - Si falta evidencia suficiente para especialización, valorar con el alumno un experto en fundamentos generales de simracing; no cambiar de alcance automáticamente.
+
+## Revisión de la guía aportada por el alumno (23/10/2026)
+
+- Añadida IR04: guía de iRacing creada en 2010, 22 páginas; revisión inicial de método y terminología, con páginas 2, 3 y 22 comprobadas visualmente.
+- Corpus actual: seis copias originales, tres PDF con 50 páginas brutas y tres HTML. Ninguna está indexada; IR04 no está aprobada íntegramente.
+- La tabla final de IR04 no devuelve texto útil con pypdf y queda excluida de una primera indexación sin transcripción revisada.
+- Ferrari GT3 registrado como experiencia del alumno; modelo exacto pendiente y estabilidad anotada como impresión personal.

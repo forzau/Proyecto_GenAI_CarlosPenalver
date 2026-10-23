@@ -15,7 +15,7 @@ Mantener una conversación nueva por caso independiente; conservarla solo en los
 
 ## Primeras preguntas documentales de LMU
 
-El alumno solo ha jugado LMU, principalmente GT3, y recuerda dificultad con el sobreviraje sin identificar coche, versión o fase de curva. Las preguntas L01–L05 son candidatas documentales propuestas para el proyecto; L06 utiliza su relato incompleto. No hay resultados del agente. Podremos preparar criterios de corrección tras revisar los artículos; las tablas e imágenes siguen pendientes de comprobación.
+El alumno solo ha jugado LMU, principalmente un Ferrari GT3 (modelo exacto pendiente), que recuerda como más estable para empezar. También recuerda dificultad con el sobreviraje sin identificar versión ni fase de curva. Las preguntas L01–L05 son candidatas documentales propuestas para el proyecto; L06 utiliza su relato incompleto. No hay resultados del agente. Podremos preparar criterios de corrección tras revisar los artículos; las tablas e imágenes siguen pendientes de comprobación.
 
 | ID | Pregunta candidata | Fuente de partida y revisión necesaria |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ El alumno solo ha jugado LMU, principalmente GT3, y recuerda dificultad con el s
 | L03 | Tras L02: «¿Cuál de esos controles debo consultar si quiero entender cuánto se reduce la potencia?» | LMU03; seguimiento documental para comprobar referencia al turno anterior |
 | L04 | ¿La explicación del ABS para LMGT3 se puede aplicar a cualquier categoría? | LMU04; revisar alcance y distinguir documentación disponible de inferencias |
 | L05 | ¿Qué diferencias de ajuste describe la guía entre sus dos LMP3? | LMU02; caso complementario, no prioritario para la experiencia GT3 del alumno; no extrapolar entre categorías |
-| L06 | «Recuerdo conducir GT3 en LMU: sobreviraban con facilidad y me costaba recuperarlos» | Relato histórico del alumno, no evidencia técnica: preguntar por coche, versión y fase relevante; no asumir causa, prescribir TC ni inventar datos. LMU03/LMU04 solo se consultarán según el contexto que llegue a aclararse |
+| L06 | «En LMU conducía un Ferrari GT3, que me resultaba más estable para empezar; otros coches me costaban y el sobreviraje era difícil de recuperar» | Relato histórico, no evidencia técnica: preguntar por modelo exacto, versión y fase relevante sin asumir causas o prescribir TC. No convertir una impresión de estabilidad en recomendación universal. LMU03/LMU04 se consultarán según contexto |
 
 No habrá respuestas de referencia hasta contrastarlas con las fuentes. Estas preguntas permiten arrancar la validación de RAG y memoria sin rodar. Los escenarios de síntomas de la tabla siguiente se mantendrán como casos hipotéticos y se concretarán con la documentación aplicable.
 
