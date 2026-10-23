@@ -5,7 +5,7 @@
 - En cada sesión de trabajo, proponer cuando sea posible una tarea concreta que el alumno pueda hacer en paralelo. Explicar para qué sirve y continuar las tareas independientes mientras la realiza.
 - El alumno solo ha jugado LMU, principalmente GT3 Ferrari, modelo exacto pendiente. Recuerda el Ferrari como más estable para empezar y otros coches difíciles, con sobreviraje frecuente y difícil de recuperar: son impresiones históricas, sin versión, fase de curva ni mediciones confirmadas. No atribuirlo a la física actual ni inventar causas. No exigir experiencia en iRacing/ACC. Empezar la validación documental por LMU y distinguir recuerdos de escenarios hipotéticos.
 - Esta carpeta es la raíz del repositorio. `../Notebooks/` contiene referencias de clase: no modificar ni copiar su entorno o sus credenciales.
-- Leer README.md y docs/PLAN.md antes de desarrollar. Actualizar el estado al completar entregables.
+- Leer README.md, docs/CONTINUAR.md y docs/PLAN.md antes de desarrollar. Actualizar el estado al completar entregables.
 - Dominio confirmado: ingeniero de boxes para simracing. El diseño cubrirá diagnóstico general e iRacing, Assetto Corsa Competizione (ACC) y Le Mans Ultimate (LMU); la cobertura demostrable depende del corpus. No asumir todos los coches o versiones.
 - Stack obligatorio: Gemini para LLM y embeddings, ChromaDB y LangGraph sobre LangChain. Notebook obligatorio; Streamlit es el bonus previsto.
 - Mantener el núcleo compartido por notebook y web cuando se implemente. Crear módulos solo cuando exista lógica que compartir.
@@ -22,3 +22,5 @@
 - Indexación completada el 23/10/2026: Gemini Embedding 2 (3072 dimensiones), Chroma y tres consultas de recuperación. Patrón de rag_profesor.ipynb y clase3.ipynb, con adaptación y reutilización en retrieval.py. No repetir llamadas de API por rutina: reutilizar índice y salidas guardadas. El alumno autorizó copiar únicamente la clave de Notebooks/.env al .env local de Proyecto; nunca mostrarla ni versionarla. Proyecto/.env tiene prioridad sobre variables heredadas.
 
 - Preferencia del alumno: notebook directo, con configuración y flujo funcional. Sin asserts, diagnósticos de entorno ni celdas de validación. Mantener las pruebas en tests/ o scripts explícitos; no repetir llamadas de API por cambios de presentación.
+
+- Cierre de sesión del 23/10/2026: siguiente fase, implementar Gemini LLM + LangGraph con fuentes y después memoria. Guía para otro equipo en docs/CONTINUAR.md; paquete privado de datos e índice en outputs/continuar_otro_equipo_2026-10-23.zip. GitHub no contiene corpus, Chroma ni clave. No regenerar embeddings si se puede restaurar el paquete.

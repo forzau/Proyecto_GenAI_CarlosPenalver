@@ -4,6 +4,8 @@ Proyecto de Carlos Peñalver para el módulo de IA Generativa del máster.
 
 **Estado: corpus indexado y recuperación inicial comprobada.** Ingeniero de boxes para **iRacing, ACC y Le Mans Ultimate**, con 75 fichas, Gemini Embedding 2 y Chroma persistente. El agente, la memoria y la web siguen pendientes. No se han probado ajustes en pista.
 
+Para retomar desde otro equipo: [guía de continuación y traslado de datos](docs/CONTINUAR.md). La rama de trabajo es `setup-inicial`; el corpus y el índice necesitan el paquete local indicado en esa guía.
+
 ## Qué queremos construir
 
 Un asistente que interprete las sensaciones del piloto, pregunte por el contexto, consulte documentación aplicable y proponga una prueba de ajuste razonada. Responderá en español, citará sus fuentes y recordará qué cambios ha confirmado el piloto y qué resultado ha observado.

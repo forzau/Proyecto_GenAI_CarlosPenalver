@@ -93,3 +93,9 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - Retirados asserts, comprobaciones de entorno y pruebas de persistencia del notebook. Celdas directas: configuración, corpus, embeddings, Chroma y un ejemplo de búsqueda.
 - La evaluación real de tres consultas queda en `scripts/evaluate_retrieval.py`; las pruebas automáticas permanecen en `tests/`. Los resultados anteriores se conservan en EVALUACION.md y en el informe local.
 - Sin nuevas llamadas a Gemini por este cambio.
+
+## Cierre y continuación en otro equipo (23/10/2026)
+
+- Guía de estado, traslado e instalación en [CONTINUAR.md](CONTINUAR.md). Rama: `setup-inicial`.
+- Paquete local fuera de Git: `outputs/continuar_otro_equipo_2026-10-23.zip`, con corpus activo, copia consistente de Chroma, resultados y versiones del entorno; sin claves ni `.venv`. Restauración local comprobada sin consumir API.
+- Próxima fase: elegir Gemini LLM e implementar el agente LangGraph con recuperación y fuentes; después, memoria.
