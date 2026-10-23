@@ -1,76 +1,67 @@
-# Fuentes y corpus
+# Corpus del MVP
 
-## Dónde buscar y qué priorizar
+Selección confirmada por el alumno el 23/10/2026: tres fuentes, una por simulador. La fase de búsqueda queda cerrada para esta entrega. No necesitamos acceso al simulador para preparar y evaluar un asistente documental.
 
-Revisión del 23/10/2026. Prioridad: documentación del desarrollador, manuales del coche elegido y cambios de versión. Las guías originales de especialistas son complementarias y deben contrastarse; foros y vídeos sirven para localizar problemas o explicaciones, no para convertir opiniones aisladas en reglas del agente.
-
-### iRacing
-
-| ID | Fuente | Qué aprovechar | Estado y límites |
+| ID | Fuente elegida | Preparación | Fichas |
 | --- | --- | --- | --- |
-| IR01 | [Catálogo oficial de manuales de coches](https://www.iracing.com/resources/user-manuals/) | Manual del coche elegido: ajustes disponibles, funcionamiento y restricciones | Falta elegir coche; el catálogo no cuenta como documento del corpus |
-| IR02 | [Guía de iniciación alojada por soporte de iRacing](https://support.iracing.com/support/solutions/articles/31000168572) | Método para describir síntomas y enlaces a documentación de reglajes | Seleccionar secciones; excluir gráficos y periféricos |
-| IR03 | [Shock Tuning User Guide](https://s100.iracing.com/wp-content/uploads/2021/08/Shock-Tuning-User-Guide.pdf) | Amortiguadores, terminología y diagramas | Copia PDF local: 20 páginas brutas; revisión de contenido y aplicabilidad pendiente |
-| IR04 | [iRacing Car Setup Guide](https://ir-core-sites.iracing.com/members/pdfs/iRacing_Car_Setup_Guide_20100910.pdf) | Método y terminología como candidatos iniciales | Copia local de 22 páginas; creación en 2010 confirmada en metadatos. [Revisión parcial](REVISION_IR04.md); no aprobada íntegramente ni para ajustes actuales |
+| LMU_USH | [Ultimate Setup Hub — Race Engineer](https://ultimatesetuphub.com/race-engineer) | Captura del árbol público: 38 páginas visitadas, 25 hojas de diagnóstico; se excluyen navegación, formularios y Eva | 25 |
+| IR_CHRIS_HAYE | [Chuleta de Chris Haye reproducida por SimRacingCockpit](https://simracingcockpit.gg/improving-your-car-setup-in-iracing/) | Transcripción visual de las celdas de la imagen; no se indexa el artículo completo | 20 |
+| ACC_DRIVER61 | [Driver61 ACC Setup Guide V1](https://driver61.com/wp-content/uploads/2021/04/Driver61-Assetto-Corsa-Competizione-Setup-Guide-V1.pdf) | Transcripción visual de una página larga, separando columnas, problemas y condiciones | 30 |
 
-### Assetto Corsa Competizione
+**Resultado: 75 fichas documentales, todavía sin embeddings ni índice Chroma.** Hay tres fuentes, no 75 documentos originales. La imagen y la lámina PDF no se contabilizan artificialmente como decenas de páginas. El inventario activo es [corpus_mvp.json](corpus_mvp.json), con autor, procedencia, método, rutas y huellas SHA-256.
 
-| ID | Fuente | Qué aprovechar | Estado y límites |
-| --- | --- | --- | --- |
-| ACC01 | [Notas oficiales de física v1.9](https://assettocorsa.gg/wp-content/uploads/ACCv19-physics_notes.pdf) | Cambios documentados de neumáticos y física de esa versión | Copia PDF local: 8 páginas brutas; referencia histórica, sin validación para otra versión |
-| ACC02 | [Soporte de 505 Games: changelog v1.10.4 para PC](https://support.505games.com/support/solutions/articles/150000217831-assetto-corsa-competizione-changelog-v1-10-4-2025-dec-22-pc-) | Complemento de versión; seguir la cadena de cambios que afecten al caso | No es un manual de setup ni demuestra por sí solo que todos los valores de v1.9 sigan vigentes |
-| ACC03 | [Coach Dave: guía de subviraje y sobreviraje](https://coachdaveacademy.com/tutorials/how-to-fix-oversteer-and-understeer-in-acc/) | Explicación original de un especialista, candidata para conceptos y relaciones entre ajustes | Complementaria, publicada en 2020; contrastar antes de incorporarla; no requiere comprar setups |
+## Qué contiene cada ficha
 
-Para ACC falta una guía de reglajes aplicable a la versión y coche de demo. Las notas v1.9 y un changelog de contenido no cierran esa laguna. Priorizar documentos técnicos del desarrollador y explicaciones del propio equipo de físicas; si se usa un vídeo, registrar autor, fecha y marcas de tiempo y revisar su transcripción. No usar una transcripción generada sin verificar.
+Una ficha corresponde a un problema completo y conserva su contexto: fase de curva, velocidad, condición, alternativas y notas. Incluye `id`, `source_id`, `simulator`, `title`, `locator`, `url`, `game_version`, `limitation` y `text`. Las hojas de LMU enlazan a su URL concreta; las transcripciones identifican la celda y, en ACC, la página 1.
 
-### Le Mans Ultimate
+Usaremos cada ficha como fragmento inicial: evita separar el síntoma de los ajustes o confundir alternativas OR con cambios acumulativos. La recuperación filtrará por `simulator`. Las respuestas de evaluación y los recuerdos del alumno quedan fuera del corpus.
 
-| ID | Fuente | Qué aprovechar | Estado y límites |
-| --- | --- | --- | --- |
-| LMU01 | [Guía oficial: sección On Track](https://guide.lemansultimate.com/hc/en-gb/sections/13152333627151-On-Track) | Navegación hacia artículos concretos de controles y comportamiento | No indexar el catálogo como contenido sustancial |
-| LMU02 | [LMP3 Quick Setup Guide](https://lemansultimate.com/lmp3-quick-setup-guide/) | Ajustes de los LMP3 descritos por el desarrollador | Copia HTML local; depende de coches, capturas y versión; no extrapolar a GT3 o Hypercar |
-| LMU03 | [Configuración del control de tracción](https://guide.lemansultimate.com/hc/en-gb/articles/13182869047311-How-do-I-configure-my-traction-control-in-Le-Mans-Ultimate) | Función de los controles y cómo localizarlos | Copia HTML local; limpiar navegación y revisar capturas |
-| LMU04 | [ABS para LMGT3](https://guide.lemansultimate.com/hc/en-gb/articles/13211078435983-ABS-Anti-Lock-Braking-System-for-LMGT3-Cars) | Alcance por categoría y explicación de mapas | Copia HTML local; la tabla de mapas es una imagen: revisión y transcripción visual pendientes |
-| LMU05 | [MFD y datos que muestra](https://guide.lemansultimate.com/hc/en-gb/articles/13202210967055-Understanding-the-MFD-Multi-Function-Display) | Qué información puede aportar el piloto al diagnóstico | Enlace localizado; no implica que el agente lea telemetría |
-| LMU06 | [Ultimate Setup Hub: Race Engineer](https://ultimatesetuphub.com/race-engineer) | Árbol comunitario de diagnóstico por síntoma, fase y velocidad | Dos hojas revisadas en navegador; [evaluación de extracción](REVISION_USH.md). Candidata complementaria, sin copia en el corpus ni validación de recomendaciones o versión |
+## Límites aceptados para esta entrega
 
-## Copias locales e inventario
+- Son guías orientativas, no configuraciones verificadas en pista. Se evaluará fidelidad documental, recuperación, citas y memoria; no ganancias de rendimiento.
+- La chuleta de Chris Haye es general y está publicada en un artículo de iRacing fechado el 19/05/2023. Se asigna a iRacing por la selección del proyecto, sin afirmar que describa los ajustes disponibles en todos sus coches.
+- El PDF de ACC es V1 y está en una ruta de publicación de abril de 2021. No demuestra vigencia para la física actual. Contiene afirmaciones que pueden resultar discutibles: transcribirlas no las valida.
+- La captura de LMU es del 23/10/2026; fecha de captura no equivale a versión de juego. No se ha utilizado la herramienta generativa Eva como fuente.
+- Coche y versión del juego no constan de forma suficiente: se registra `unknown`. El agente podrá explicar lo que recomienda la guía con esa limitación; no necesita bloquear una explicación cualitativa hasta conocer todos los datos.
+- Se conservan las condiciones y advertencias de los originales. La broma PICNIC de la lámina de iRacing se identifica como nota humorística, no como diagnóstico del usuario.
 
-Se han guardado seis originales en `data/corpus/pendientes/`: IR03, IR04, ACC01, LMU02, LMU03 y LMU04. Hay tres PDF (50 páginas brutas en total) y tres artículos HTML. IR04 tiene una revisión inicial documentada; los demás siguen pendientes de revisión. El [inventario de capturas](corpus.json) registra procedencia, autor, formato, ruta, tamaño, fecha, SHA-256 y límites conocidos. Las copias originales permanecen fuera de Git; el inventario se versiona.
+No se ha identificado una licencia que permita redistribuir los originales y sus transcripciones. Permanecen en local y fuera de Git, junto con el corpus generado. El repositorio contiene el inventario, el método y el constructor.
 
-**No están limpios, aprobados para responder ni indexados.** `pendientes/` no deberá entrar en la indexación hasta revisar cada fuente y su aplicabilidad. El volumen bruto no equivale a páginas útiles; tablas e imágenes pueden contener información que no aparece en la extracción de texto.
+## Archivos y reproducción local
 
-Objetivo: al menos tres documentos sustanciales y unas 20 páginas equivalentes útiles, con casos respaldados de los tres simuladores. La selección final tendrá que añadir el manual del coche de iRacing y completar ACC según los casos elegidos. No comprar contenido ni recopilar cientos de páginas para empezar.
+```text
+data/corpus/mvp/
+├── originales/
+│   ├── lmu_pages.json
+│   ├── iracing_cheatsheet.jpg
+│   └── acc_driver61_v1.pdf
+└── preparado/
+    ├── iracing_cheatsheet.md
+    ├── acc_driver61_v1.md
+    └── corpus.jsonl
+```
 
-## Tarea del alumno en paralelo
+Desde `Proyecto`, con los archivos locales presentes:
 
-El alumno solo ha jugado LMU, principalmente GT3, y recuerda sobreviraje difícil de recuperar sin más contexto confirmado. El relato está en [CASOS_PILOTO.md](CASOS_PILOTO.md). Ha identificado Ferrari como marca y recuerda que le resultaba más estable que los otros coches al empezar. Es su impresión histórica, no una clasificación objetiva. Su tarea opcional es precisar el modelo del Ferrari si lo recuerda. Priorizar documentación aplicable a LMGT3; la guía LMP3 queda como complemento y no justifica ajustes para GT3. Los casos técnicos se construirán desde fuentes y se etiquetarán como hipotéticos; no dependemos de recuerdos para limpiar los documentos. Las respuestas de referencia se mantendrán fuera del corpus.
+```powershell
+.\.venv\Scripts\python.exe scripts/build_corpus.py
+.\.venv\Scripts\python.exe -m unittest discover -s tests
+```
 
-## Registro al incorporar cada documento
+El constructor verifica las huellas del inventario, rechaza capturas incompletas o fichas vacías y reúne las 75 fichas en JSONL. Si se cambia una transcripción, revisarla antes de actualizar su huella en el inventario. No llama a Gemini.
 
-Anotar ID, título, autor, URL original o procedencia, fecha de consulta, fecha/versión del documento, versión de juego aplicable si se conoce, archivo local, idioma, extensión útil, permiso/licencia y limpieza realizada. Si no se puede redistribuir, indicar cómo obtenerlo en lugar de subirlo.
+Para volver a obtener los originales:
 
-La fecha de consulta no demuestra que un documento sea aplicable a la versión actual del juego. Registrar por separado las versiones conocidas y las desconocidas. Las notas de actualización complementan los manuales; no asumir que una guía anterior sigue vigente sin contrastarla.
+1. LMU: abrir el árbol público y recorrer sus enlaces de diagnóstico. En cada hoja guardar URL, ruta de decisiones, título, texto y HTML del bloque que contiene el encabezado principal. La captura local incluye `visited`, `pending`, `errors` y `pages`; una captura completa no debe dejar pendientes ni errores. Se realizó desde el DOM de un navegador porque la página carga el contenido dinámicamente.
+2. iRacing: descargar la [imagen enlazada desde el artículo](https://simracingcockpit.gg/wp-content/uploads/2023/05/iracing-setup-cheat-sheet.jpg) y transcribir cada celda en un apartado Markdown `##`, conservando condiciones y alternativas.
+3. ACC: descargar el PDF y revisar visualmente sus zonas. El texto extraído directamente mezcla columnas: por eso cada celda se transcribió a un apartado `##` en lugar de usar esa extracción.
 
-## Metadatos y recuperación previstos
+La nueva obtención y la transcripción visual requieren revisión manual; no se promete reconstrucción automática idéntica desde una clonación vacía. Las huellas permiten comprobar las copias usadas en esta entrega.
 
-Cada fragmento conservará ID de documento, título, URL, página o sección e ID de fragmento, además de:
+## Material anterior en reserva
 
-- `simulator`: `iracing`, `acc`, `lmu` o `general`. El valor `general` requiere revisar su aplicabilidad; no se usa como comodín para documentos específicos.
-- Coche o categoría cubierta y versión aplicable, cuando consten; lo desconocido se registra como desconocido.
-- Fecha y versión del documento, y tema del fragmento cuando ayude a comprobar su alcance.
+Las seis copias de `data/corpus/pendientes/` y [corpus.json](corpus.json) son un archivo de fuentes candidatas, fuera del corpus activo. Las revisiones [IR04](REVISION_IR04.md) y [Ultimate Setup Hub](REVISION_USH.md) conservan la exploración anterior; no amplían la selección actual.
 
-Filtrar por simulador antes de recuperar: documentos del simulador elegido más fundamentos generales revisados. Comprobar coche, versión y unidades antes de recomendar cifras o ajustes específicos. Si no hay fuente aplicable, reconocer la laguna. Al cambiar simulador o coche, volver a recuperar con el nuevo contexto.
+## Referencias de clase
 
-Si cambia el modelo de embeddings o la segmentación, reconstruir el índice y registrar la configuración utilizada. Los documentos se guardarán en `data/corpus/` y el índice en `data/chroma/`, ambos excluidos de Git. El inventario debe permitir reproducir el corpus.
-
-## Referencias locales de clase
-
-| Notebook en ../Notebooks/ | Qué reutilizar como referencia |
-| --- | --- |
-| rag_profesor.ipynb y clase3.ipynb | Carga de PDF, chunking, Chroma y recuperación; usar Gemini Embeddings según el enunciado |
-| clase_LangGraph.ipynb | Estado, nodos, aristas y flujo del grafo |
-| clase_agentes.ipynb | Historial, mensajes y checkpointer de memoria |
-| clase2.ipynb | Configuración de Gemini y composición de prompts |
-
-Son referencias de aprendizaje. No copiar sus claves, sus bases vectoriales ni sus salidas a este proyecto.
+`../Notebooks/rag_profesor.ipynb` y `clase3.ipynb`: carga, Chroma y recuperación. `clase_LangGraph.ipynb`: grafo. `clase_agentes.ipynb`: memoria. `clase2.ipynb`: Gemini y prompts. No copiar claves, índices ni salidas del entorno de clase.

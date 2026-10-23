@@ -13,31 +13,30 @@ La memoria debe estar disponible en ambas variantes para evaluar el efecto de RA
 
 Mantener una conversación nueva por caso independiente; conservarla solo en los seguimientos. Revisar manualmente las respuestas y repetir los fallos dudosos. No indexar las respuestas de referencia de evaluación como parte del corpus.
 
-## Primeras preguntas documentales de LMU
+## Preguntas documentales del corpus elegido
 
-El alumno solo ha jugado LMU, principalmente un Ferrari GT3 (modelo exacto pendiente), que recuerda como más estable para empezar. También recuerda dificultad con el sobreviraje sin identificar versión ni fase de curva. Las preguntas L01–L05 son candidatas documentales propuestas para el proyecto; L06 utiliza su relato incompleto. No hay resultados del agente. Podremos preparar criterios de corrección tras revisar los artículos; las tablas e imágenes siguen pendientes de comprobación.
+Corpus activo: 75 fichas de tres fuentes; `docs/corpus_mvp.json`. Las seis fuentes anteriores no participan en la recuperación. Estas preguntas son escenarios hipotéticos, no experiencias ni pruebas en pista. Los criterios se comprobarán contra las fichas concretas; no se han ejecutado respuestas de Gemini.
 
-| ID | Pregunta candidata | Fuente de partida y revisión necesaria |
+| ID | Pregunta | Evidencia y criterio |
 | --- | --- | --- |
-| L01 | ¿El control de tracción se configura como una ayuda global o dentro del coche en LMU? | LMU03; verificar explicación y límites de aplicabilidad |
-| L02 | ¿Qué diferencia hay entre Traction Control, Power Cut y Slip Angle? | LMU03; revisar texto y capturas, sin inventar escalas para un coche no identificado |
-| L03 | Tras L02: «¿Cuál de esos controles debo consultar si quiero entender cuánto se reduce la potencia?» | LMU03; seguimiento documental para comprobar referencia al turno anterior |
-| L04 | ¿La explicación del ABS para LMGT3 se puede aplicar a cualquier categoría? | LMU04; revisar alcance y distinguir documentación disponible de inferencias |
-| L05 | ¿Qué diferencias de ajuste describe la guía entre sus dos LMP3? | LMU02; caso complementario, no prioritario para la experiencia GT3 del alumno; no extrapolar entre categorías |
-| L06 | «En LMU conducía un Ferrari GT3, que me resultaba más estable para empezar; otros coches me costaban y el sobreviraje era difícil de recuperar» | Relato histórico, no evidencia técnica: preguntar por modelo exacto, versión y fase relevante sin asumir causas o prescribir TC. No convertir una impresión de estabilidad en recomendación universal. LMU03/LMU04 se consultarán según contexto |
+| D01 | En LMU, ¿qué propone esta guía para el sobreviraje a la salida de una curva lenta? | LMU_USH: Oversteer / Corner Exit / Low Speed. Conservar fase, velocidad, supuestos y URL de la hoja; no presentar toda la lista como cambios simultáneos |
+| D02 | En iRacing, ¿qué cambio de reparto de frenada sugiere la chuleta si bloquean a menudo las ruedas delanteras? | IR_CHRIS_HAYE: Braking / Front tyres often lock. Citar la celda y recordar que la lámina es orientativa |
+| D03 | Según la guía de ACC, ¿qué ajustes aparecen si resulta incómodo pasar por los pianos? | ACC_DRIVER61: Tyres / Uncomfortable taking kerbs. No mezclar con sobrecalentamiento ni con otro simulador |
+| D04 | Tras D01: «Todavía no he cambiado nada. ¿Qué debería observar si pruebo solo tu primera propuesta?» | Recuperar contexto y distinguir propuesta de cambio aplicado; explicar qué se espera observar sin inventar un resultado |
+| D05 | ¿Qué presión exacta es óptima para mi Ferrari GT3 en la versión actual de LMU? | Reconocer que el corpus no permite garantizar ese valor. No inventar modelo del Ferrari, versión, presión ni cita |
 
-No habrá respuestas de referencia hasta contrastarlas con las fuentes. Estas preguntas permiten arrancar la validación de RAG y memoria sin rodar. Los escenarios de síntomas de la tabla siguiente se mantendrán como casos hipotéticos y se concretarán con la documentación aplicable.
+No se requiere simulador para esta evaluación. «Coherente con la guía» no equivale a «físicamente correcto en la versión actual». Una fuente ambigua o contradictoria debe señalarse, no corregirse silenciosamente ni presentarse como garantía.
 
 ## Casos iniciales
 
-Adaptar coche, versión y condiciones al corpus final. Las expectativas son criterios de revisión, no recomendaciones técnicas ni respuestas ya verificadas.
+Usar el corpus seleccionado; dejar coche y versión como desconocidos cuando no consten. Las expectativas son criterios de revisión, no recomendaciones técnicas ni respuestas ya verificadas.
 
 | ID | Pregunta o situación | Qué comprobar |
 | --- | --- | --- |
 | E01 | «El coche se va de morro, ¿qué necesitas saber?» | Solicita contexto relevante sin inventar simulador, coche o fase de curva; puede explicar conceptos generales |
 | E02 | Caso de iRacing: coche y condiciones aportados, subviraje en una fase concreta | Recupera fuentes aplicables y propone una prueba principal razonada, sin parámetros inexistentes |
-| E03 | Caso de ACC: consulta de neumáticos con coche y versión identificados | Verifica aplicabilidad y unidades; no usa cifras de iRacing o LMU ni toma una guía histórica como vigente por defecto |
-| E04 | Caso de LMU: problema de comportamiento de un coche documentado | Fundamenta la respuesta en material de LMU y no extrapola entre categorías sin evidencia |
+| E03 | Caso de ACC: consulta de pianos o neumáticos según Driver61 V1 | Verifica aplicabilidad y unidades; no usa cifras de iRacing o LMU ni toma una guía histórica como vigente por defecto |
+| E04 | Caso de LMU: síntoma con fase de curva y velocidad indicadas | Fundamenta la respuesta en material de LMU y no extrapola entre categorías sin evidencia |
 | E05 | Tras E02: «He aplicado tu cambio; ahora pierdo tracción al salir» | Recuerda lo recomendado y lo confirmado como aplicado; revisa hipótesis y pide los datos que falten |
 | E06 | «Dime la presión perfecta para cualquier simulador y coche» | Rechaza la premisa universal y pide contexto; no inventa una cifra óptima |
 | E07 | Sesión con setup fijo o ajuste propuesto que no permite ese coche | Respeta restricciones y reconoce la falta de evidencia sobre ajustes disponibles |
@@ -51,7 +50,7 @@ El notebook documentará al menos cinco preguntas concretas y sus respuestas rea
 
 ## Criterios por caso
 
-- Corrección: 0 incorrecta, 1 parcial, 2 coherente con documentación aplicable.
+- Fidelidad documental: 0 contradice o inventa contenido, 1 parcial, 2 reproduce el sentido y las condiciones de la fuente. La vigencia física no se valida en esta entrega.
 - Ajuste al contexto: 0 mezcla entornos o inventa datos, 1 explicita supuestos, 2 usa los datos disponibles y pregunta por los imprescindibles ausentes.
 - Evidencias: comprobar que las citas existen y respaldan la afirmación. En la variante sin documentos, marcar «no aplica».
 - Memoria: distingue recomendado, aplicado y observado; conserva o revisa el contexto cuando corresponde.

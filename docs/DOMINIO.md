@@ -1,6 +1,6 @@
 # Ingeniero de boxes para simracing
 
-Dominio confirmado por el alumno el 22/10/2026. El diseño cubrirá diagnóstico general e iRacing, Assetto Corsa Competizione (ACC) y Le Mans Ultimate (LMU). La profundidad demostrable de cada simulador depende del corpus; todavía no hay coches ni versiones validados.
+Dominio confirmado por el alumno el 22/10/2026. El diseño cubrirá diagnóstico general e iRacing, Assetto Corsa Competizione (ACC) y Le Mans Ultimate (LMU). El MVP utiliza las tres guías elegidas por el alumno, con 75 fichas documentales; no hay coches ni versiones validados en pista. Véase FUENTES.md.
 
 ## Usuario y problema
 
@@ -63,6 +63,5 @@ Los diálogos de prueba serán escenarios ficticios identificados como tales. La
 
 ## Decisiones pendientes
 
-- Seleccionar documentos sustanciales de los tres simuladores y registrar sus versiones.
-- Elegir los coches de demo según documentación disponible; aprovechar la experiencia del alumno en LMU sin exigir experiencias en los otros simuladores.
+- Preparar la indexación y consultas de demo basadas en las guías ya seleccionadas. No es necesario fijar un coche para explicar sus recomendaciones cualitativas; declarar los límites de aplicación.
 - Confirmar fecha y hora exactas de entrega y cuota o presupuesto de Gemini para las pruebas.

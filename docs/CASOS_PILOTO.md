@@ -22,7 +22,7 @@ La primera prueba del agente será reconocer esa falta de contexto y preguntar d
 
 ## Tarea en paralelo
 
-Si recuerda el modelo exacto del Ferrari GT3, indicarlo; no asumir que era el 296 sin confirmación. No necesita volver a jugar ni reconstruir condiciones que no recuerda. Podemos seguir revisando fuentes con la categoría GT3 y dejar los demás datos como desconocidos.
+Proponer una pregunta que le resulte natural por simulador y una pregunta de seguimiento. No necesita conocer la respuesta ni disponer del juego. El modelo exacto del Ferrari se puede dejar como desconocido; no asumir que era el 296.
 
 Más adelante podrá probar la conversación del asistente y valorar si entiende la explicación, si las preguntas de contexto tienen sentido y si la respuesta le ayuda a decidir qué información consultar. Esta valoración no equivale a validar técnicamente el reglaje.
 

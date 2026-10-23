@@ -1,0 +1,85 @@
+{
+  "status": "prepared_mvp_not_indexed",
+  "captured_at": "2026-10-23",
+  "total_cards": 75,
+  "selection": "Tres fuentes elegidas por el alumno; las seis anteriores quedan como reserva.",
+  "sources": [
+    {
+      "id": "LMU_USH",
+      "simulator": "lmu",
+      "title": "Ultimate Setup Hub — Race Engineer",
+      "author": "Ultimate Setup Hub",
+      "url": "https://ultimatesetuphub.com/race-engineer",
+      "document_date": "unknown",
+      "locator": "Ruta del árbol público",
+      "cards": 25,
+      "input": "data/corpus/mvp/originales/lmu_pages.json",
+      "method": "DOM del árbol público: 38 páginas visitadas y 25 hojas; navegación, Eva y formularios excluidos.",
+      "limitation": "Guía comunitaria; versión y coche no especificados. No verificada en pista.",
+      "files": [
+        {
+          "path": "data/corpus/mvp/originales/lmu_pages.json",
+          "bytes": 154697,
+          "sha256": "db577b49e437adebf75ff1d8540c0f680ed2c81966bbd99334582b9da289798b"
+        }
+      ],
+      "game_version": "unknown",
+      "redistribution": "No se ha identificado licencia de redistribución; copias y transcripciones solo locales, fuera de Git."
+    },
+    {
+      "id": "IR_CHRIS_HAYE",
+      "simulator": "iracing",
+      "title": "Chris Haye setup cheat sheet",
+      "author": "Chris Haye; reproducido en SimRacingCockpit por Richard Baxter",
+      "url": "https://simracingcockpit.gg/improving-your-car-setup-in-iracing/",
+      "asset_url": "https://simracingcockpit.gg/wp-content/uploads/2023/05/iracing-setup-cheat-sheet.jpg",
+      "document_date": "2023-05-19 (artículo; fecha de la lámina desconocida)",
+      "locator": "Lámina / celda",
+      "cards": 20,
+      "input": "data/corpus/mvp/preparado/iracing_cheatsheet.md",
+      "method": "Transcripción visual manual por celdas; conserva condiciones, alternativas y notas.",
+      "limitation": "Lámina de fundamentos generales publicada en un artículo de iRacing; no manual específico de coche ni versión. No verificada en pista.",
+      "files": [
+        {
+          "path": "data/corpus/mvp/originales/iracing_cheatsheet.jpg",
+          "bytes": 140360,
+          "sha256": "cc007a08d29c68fae7bcedde1829f3f4be6a8671aaa86c4dd6d87a2be0491f21"
+        },
+        {
+          "path": "data/corpus/mvp/preparado/iracing_cheatsheet.md",
+          "bytes": 3384,
+          "sha256": "2f5552bc81269b9e87c2b40c69d7cbc9535d9e4d1b8fbf424c1d95a5b4ba845a"
+        }
+      ],
+      "game_version": "unknown",
+      "redistribution": "No se ha identificado licencia de redistribución; copias y transcripciones solo locales, fuera de Git."
+    },
+    {
+      "id": "ACC_DRIVER61",
+      "simulator": "acc",
+      "title": "Driver61 Assetto Corsa Competizione Setup Guide V1",
+      "author": "Driver61",
+      "url": "https://driver61.com/wp-content/uploads/2021/04/Driver61-Assetto-Corsa-Competizione-Setup-Guide-V1.pdf",
+      "document_date": "V1; ruta de publicación 2021/04",
+      "locator": "Página 1 / celda",
+      "cards": 30,
+      "input": "data/corpus/mvp/preparado/acc_driver61_v1.md",
+      "method": "Transcripción visual manual de una página larga; revisión por zonas para evitar mezclar columnas de la extracción PDF.",
+      "limitation": "Guía histórica V1, versión de juego y coche no especificados; no garantiza aplicabilidad a ACC actual. No verificada en pista.",
+      "files": [
+        {
+          "path": "data/corpus/mvp/originales/acc_driver61_v1.pdf",
+          "bytes": 9251615,
+          "sha256": "2196b43e88f3a77269f05f19af7024e2a7cf971ba5f1890f1119cbc6d795e018"
+        },
+        {
+          "path": "data/corpus/mvp/preparado/acc_driver61_v1.md",
+          "bytes": 7249,
+          "sha256": "39c179239cf6fb104ff3be7afee12a2260460862b435ad55e065351c647a6644"
+        }
+      ],
+      "game_version": "unknown",
+      "redistribution": "No se ha identificado licencia de redistribución; copias y transcripciones solo locales, fuera de Git."
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 Setup iniciado el 22/10/2026. El alumno indica una semana de plazo; confirmar el día y la hora exactos. Mantener Gemini como único proveedor. La web está prevista como bonus después del MVP.
 
-Dominio confirmado: ingeniero de boxes para simracing, con diagnóstico general e iRacing, ACC y Le Mans Ultimate. Falta seleccionar el corpus y concretar los coches y versiones de demo. Ver DOMINIO.md.
+Dominio confirmado: ingeniero de boxes para simracing, con diagnóstico general e iRacing, ACC y Le Mans Ultimate. Corpus seleccionado y preparado: 75 fichas de tres fuentes; coches y versiones no especificados. Demo documental, sin pruebas en pista. Ver DOMINIO.md.
 
 El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los títulos intercambiados respecto al contenido: este plan agrupa las tareas por lo que realmente requieren.
 
@@ -26,10 +26,10 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - [x] Preparar estructura, variables de entorno y protección de archivos locales.
 - [x] Preparar notebook de trabajo, borrador del prompt y plan de evaluación.
 - [x] Confirmar dominio, usuario objetivo y alcance de diagnóstico para iRacing, ACC y LMU.
-- [ ] Concretar coches, versiones y casos de demo según el corpus disponible.
+- [x] Acotar demo a consultas documentales de las guías seleccionadas; no exigir acceso al simulador.
 - [x] Localizar fuentes oficiales y capturar cinco originales con inventario de procedencia (23/10/2026).
-- [ ] Seleccionar corpus suficiente; registrar autor, origen, fecha y permisos.
-- [ ] Limpiar texto, revisar tablas/imágenes y comprobar versión y cobertura de cada documento antes de indexar.
+- [x] Seleccionar las tres fuentes del MVP y registrar procedencia, fecha, límites y huellas.
+- [x] Capturar 25 hojas de LMU y transcribir visualmente 20 celdas de iRacing y 30 de ACC; preparar JSONL y carga en notebook.
 - [x] Instalar y comprobar el entorno independiente.
 - [ ] Elegir modelos disponibles y probar una llamada controlada a Gemini.
 - [ ] Indexar corpus con Gemini Embeddings en ChromaDB y verificar recuperación.
@@ -68,26 +68,11 @@ El PDF original está en la raíz local de Proyecto. Sus pasos 2 y 3 tienen los 
 - Revisados los archivos preparados para Git: no incluyen entorno, corpus, indice ni claves reconocibles.
 - No se ha validado aun RAG, memoria, calidad de respuestas ni la web: su implementacion queda pendiente.
 
-## Avance de fuentes (23/10/2026)
+## Corpus preparado (23/10/2026)
 
-- Cinco copias originales locales e inventario en `docs/corpus.json`: dos PDF con 28 páginas brutas y tres HTML.
-- Limpieza, revisión visual, aplicabilidad y suficiencia útil pendientes; todavía no existe un índice Chroma.
-- Prioridad siguiente, ajustada al contexto del alumno: limpiar y revisar LMU primero, preparar preguntas documentales y después completar manuales de iRacing y documentación de ACC.
-- El alumno solo ha jugado LMU, principalmente un Ferrari GT3 (modelo exacto pendiente), que recuerda como más estable para empezar. Recuerda dificultad con el sobreviraje; versión y fase desconocidas. El relato se usará para probar si el agente pide contexto sin inventar causas.
-- Priorizar fuentes aplicables a LMGT3; mantener la guía LMP3 como complemento, sin extrapolar sus ajustes.
-- Tarea paralela opcional del alumno: precisar el modelo del Ferrari GT3 si lo recuerda, sin necesidad de volver a jugar.
-- Si falta evidencia suficiente para especialización, valorar con el alumno un experto en fundamentos generales de simracing; no cambiar de alcance automáticamente.
-
-## Revisión de la guía aportada por el alumno (23/10/2026)
-
-- Añadida IR04: guía de iRacing creada en 2010, 22 páginas; revisión inicial de método y terminología, con páginas 2, 3 y 22 comprobadas visualmente.
-- Corpus actual: seis copias originales, tres PDF con 50 páginas brutas y tres HTML. Ninguna está indexada; IR04 no está aprobada íntegramente.
-- La tabla final de IR04 no devuelve texto útil con pypdf y queda excluida de una primera indexación sin transcripción revisada.
-- Ferrari GT3 registrado como experiencia del alumno; modelo exacto pendiente y estabilidad anotada como impresión personal.
-
-## Fuente comunitaria propuesta: Ultimate Setup Hub (23/10/2026)
-
-- Inspeccionadas dos hojas públicas de sobreviraje y el historial del sitio; evaluación en `docs/REVISION_USH.md`.
-- Candidata para extracción piloto por síntoma, fase y velocidad, conservando supuestos y procedencia.
-- Pendientes extracción reproducible, condiciones de reutilización y contraste técnico; sin nuevas copias ni indexación.
-- Tarea paralela opcional del alumno: recorrer una de las dos rutas y señalar qué explicación le resulta útil o poco clara para adaptar el lenguaje del asistente.
+- Selección cerrada por el alumno: Ultimate Setup Hub para LMU, chuleta Chris Haye del artículo SimRacingCockpit para iRacing y PDF Driver61 V1 para ACC.
+- 38 páginas del árbol público visitadas y 25 hojas capturadas; 50 fichas adicionales transcritas visualmente de las dos láminas. Total: 75 fichas con fuente, localizador y simulador.
+- Inventario activo en `docs/corpus_mvp.json`; constructor local y carga de documentos en el notebook. Las seis capturas previas quedan como reserva en `docs/corpus.json`.
+- Versión de juego y coche desconocidos; antigüedad y límites registrados. No hace falta probar reglajes para esta entrega: se evaluará respaldo documental, recuperación, citas y memoria.
+- Siguiente fase: elegir modelos Gemini disponibles, indexar en Chroma y comprobar recuperación antes de implementar el agente.
+- Tarea opcional del alumno: proponer una pregunta por simulador y un seguimiento. No necesita conocer la respuesta ni volver a jugar.

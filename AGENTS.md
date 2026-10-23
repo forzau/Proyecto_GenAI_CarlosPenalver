@@ -16,3 +16,5 @@
 - Filtrar la recuperación por simulador y aplicabilidad del documento; no trasladar valores o ajustes entre simuladores, coches o versiones. No inventar telemetría, reglajes disponibles ni mejoras en pista.
 - Una sesión conserva síntomas, condiciones, recomendaciones y cambios confirmados por el piloto. Al cambiar simulador o coche, pedir confirmar el nuevo contexto y descartar los reglajes anteriores como estado vigente.
 - Hacer las pruebas adecuadas a cada cambio. Al implementar recuperación y memoria, probar los límites con datos locales y añadir una comprobación pequeña de su comportamiento.
+
+- Corpus MVP cerrado por el alumno el 23/10/2026: LMU Ultimate Setup Hub, chuleta Chris Haye del artículo SimRacingCockpit y PDF ACC Driver61 V1. Inventario activo: docs/corpus_mvp.json. Las seis fuentes de docs/corpus.json son reserva. No ampliar fuentes ni exigir validación en pista: el alumno no dispone del simulador. Evaluar fidelidad a las guías, citas, recuperación y memoria, declarando antigüedad y versión desconocida. No bloquear explicaciones cualitativas por falta de coche o versión.
