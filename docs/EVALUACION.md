@@ -1,8 +1,10 @@
 # Evaluación prevista
 
-Estado: tres pruebas reales de recuperación completadas; aún no hay respuestas de un LLM ni evaluación del agente. Los escenarios de piloto serán ficticios salvo que se indique una prueba real en el simulador.
+Estado: cinco casos D01–D05 con respuestas reales, cubriendo LMU, iRacing, ACC, seguimiento y presión exacta no disponible; además se conserva un seguimiento aplicado. Chat en notebook y 31 pruebas locales. La revisión documental es parcial. La comparación con Gemini sin RAG se descartó por decisión del alumno el 24/10/2026; no es un requisito del enunciado. Los escenarios de piloto son ficticios salvo que se indique una prueba real en el simulador.
 
-## Comparación frente a Gemini sin RAG
+## Propuesta de comparación descartada
+
+La metodología siguiente se conserva como antecedente; no es una tarea pendiente ni forma parte de la entrega acordada.
 
 Usar el mismo identificador de Gemini, configuración de generación, rol, reglas de respuesta, preguntas e historial de piloto en ambas variantes. Registrar modelo, fecha, prompt, corpus, filtros y configuración de recuperación.
 
@@ -15,7 +17,7 @@ Mantener una conversación nueva por caso independiente; conservarla solo en los
 
 ## Preguntas documentales del corpus elegido
 
-Corpus activo: 75 fichas de tres fuentes; `docs/corpus_mvp.json`. Las seis fuentes anteriores no participan en la recuperación. Estas preguntas son escenarios hipotéticos, no experiencias ni pruebas en pista. Los criterios se comprobarán contra las fichas concretas; no se han ejecutado respuestas de Gemini.
+Corpus activo: 75 fichas de tres fuentes; `docs/corpus_mvp.json`. Las seis fuentes anteriores no participan en la recuperación. Estas preguntas son escenarios hipotéticos, no experiencias ni pruebas en pista. Los cinco casos y un seguimiento aplicado se han ejecutado con Gemini. Se reutilizaron búsquedas y respuestas previas cuando procedía, con la procedencia registrada. Los criterios se comprueban contra las fichas concretas.
 
 | ID | Pregunta | Evidencia y criterio |
 | --- | --- | --- |
@@ -78,3 +80,71 @@ Gemini Embedding 2, 3072 dimensiones, Chroma persistente, coseno y k=3. Consulta
 | ACC | Incomodidad e inestabilidad al pasar por pianos | ACC_DRIVER61_18 | 2 | Solo ACC |
 
 Los tres casos recuperaron la ficha esperada entre los tres primeros; no siempre fue el primer resultado. Esta muestra no mide precisión global ni demuestra corrección de los reglajes. Las pruebas locales verifican persistencia, ausencia de duplicados y filtrado con vectores ficticios, sin consumir API; la relevancia semántica solo se ha comprobado en las tres consultas reales de la tabla. Falta evaluar respuestas, citas y memoria del agente.
+
+## Primer caso del agente (24/10/2026)
+
+Consulta D01: «En LMU, tengo sobreviraje al acelerar a la salida de una curva lenta. ¿Qué propone la guía?». Modelo `gemini-3.1-flash-lite`, temperatura 1.0, máximo 1800 tokens de salida, k=3, filtro LMU y colección `simracing_1809b2209d21ea5366b5`. Sin memoria. Corpus sin cambios.
+
+El notebook se ejecutó con un kernel real. Dos pasadas sobre el mismo caso: dos embeddings de consulta y dos generaciones; no son dos casos independientes ni cinco respuestas de evaluación. Los informes privados conservan modelo, fecha, huellas de corpus y prompt, fragmentos, respuesta y tokens. Las 75 fichas no se reindexaron.
+
+| Pasada | Revisión documental | Tokens entrada / salida |
+| --- | --- | --- |
+| Inicial | Cita existente y ajuste principal respaldado por `LMU_USH_24`, pero añade un desplazamiento del equilibrio aerodinámico que esa ficha no explica y omite el supuesto de trazada correcta. Se revisa el prompt. | 1859 / 488 |
+| Con prompt revisado | Cita `LMU_USH_24`, atribuye la explicación a la guía, explicita el supuesto de trazada correcta y propone aumentar la altura delantera como prueba principal. No repite la explicación aerodinámica añadida. | 2009 / 450 |
+
+Las dos respuestas se conservan en `outputs/agent_smoke_initial.json` y `outputs/agent_smoke.json` (fuera de Git); la copia del notebook anterior a la revisión de voz está en `outputs/proyecto_antes_estilo.ipynb`. La ficha citada se ha comparado con la segunda respuesta. La condición de revertir si empeora el giro a la entrada no aparece en esa ficha: es un criterio observacional propuesto por el modelo, no una afirmación documental validada. La fidelidad sigue necesitando evaluación más amplia; tener un ID válido no garantiza el respaldo de cada frase.
+
+En esas primeras pasadas, diez pruebas locales sin API cubrían corpus, recuperación y límites del grafo. No había memoria ni comparación con el modelo base. Son comprobaciones funcionales con dobles locales, no pruebas de corrección de Gemini. No se conoce la facturación efectiva y no se ha modificado la cuenta.
+
+## Revisión de voz (24/10/2026)
+
+El alumno pidió una voz más propia de un ingeniero, evitando la atribución repetitiva «según la guía». El prompt conserva respaldo y citas, pero integra la evidencia en recomendaciones directas, formula las causas como hipótesis y limita las advertencias a lo que afecte a la decisión.
+
+Se reutilizaron exactamente la pregunta D01 y los tres fragmentos de la recuperación real anterior. Una nueva generación con `gemini-3.1-flash-lite`, temperatura 1.0 y máximo 1800 tokens, sin consulta de embeddings ni evaluación nueva de la recuperación. Uso: 2394 tokens de entrada y 325 de salida. Resultado e información de procedencia en `outputs/agent_style.json`; respuesta real guardada en Markdown en la sección 4 del notebook. Las celdas de código se dejaron sin ejecutar para el prompt actualizado.
+
+La nueva respuesta usa «Empezaría por…» y no repite «según la guía». Cita `LMU_USH_24` y propone reducir la rigidez de la barra estabilizadora trasera; esa opción y la alternativa de bloqueo de potencia figuran en la ficha. Conserva el supuesto de trazada correcta y pregunta si el ajuste está permitido. La mejora de tracción longitudinal es una interpretación cualitativa de la explicación sobre ablandar la suspensión trasera, no una medición ni una garantía. La propuesta principal cambia respecto a las pasadas anteriores: no se ha demostrado consistencia al priorizar ajustes.
+
+Esta comprobación evalúa el cambio de voz en un solo caso. No demuestra mayor conocimiento del dominio ni completa los cinco casos de entrega. La revisión documental y la de estilo se registran por separado.
+
+## Memoria por conversación (24/10/2026)
+
+Prueba con `InMemorySaver` y Gemini 3.1 Flash-Lite, temperatura 1.0, máximo 1800 tokens, k=3 y filtro LMU. Se cargó el intercambio real de `outputs/agent_style.json` en una conversación temporal para evitar volver a generar el primer turno. Después se ejecutaron dos seguimientos con recuperación y generación nuevas: dos embeddings de consulta y dos llamadas al LLM, sin regenerar embeddings del corpus. Informe privado: `outputs/memory_evaluation.json`; respuestas completas en la sección 5 del notebook.
+
+| Turno | Qué dijo el piloto ficticio | Resultado sobre memoria | Tokens entrada / salida |
+| --- | --- | --- | --- |
+| D04 | Todavía no ha cambiado nada; pregunta qué observar al probar la primera propuesta | Identifica la propuesta de barra estabilizadora trasera y habla de la prueba en futuro; no afirma que ya se haya aplicado. | 2896 / 348 |
+| Seguimiento aplicado | Ha reducido la rigidez de la barra trasera y relata menos sobreviraje, todavía presente | Recuerda el cambio y la mejora parcial relatada; propone otra prueba de suspensión. | 3191 / 369 |
+
+La continuidad está demostrada en esos dos mensajes, pero la fidelidad técnica sigue siendo parcial. En D04 añade pérdida de agilidad o subviraje a la entrada; en el siguiente turno añade tocar fondo y comportamientos en baches que no aparecen en la ficha `LMU_USH_24` citada. «Valida la dirección de trabajo» atribuye demasiada fuerza causal a un único efecto relatado por el piloto. Las citas existentes no bastan para validar esas afirmaciones. No presentar estas salidas como prueba de corrección física ni como una mejora medida.
+
+Veintiuna pruebas locales sin API cubren corpus, recuperación, presentación y memoria. Las nuevas pruebas comprueban historial con roles, preparación del seguimiento antes de buscar, separación de conversaciones, confirmación al cambiar de simulador/coche, no heredar el coche entre simuladores, completar un coche desconocido, cancelación, fallo de API sin respuesta antigua ni duplicación del piloto, ausencia de documentos y rechazo de citas de turnos anteriores no recuperadas ahora. Las respuestas de los dobles locales no son respuestas reales de Gemini.
+
+El contexto de coche y simulador se cambia mediante campos explícitos. Si el piloto solo lo menciona en el texto, el prompt pide actualizar y confirmar esos campos; esa detección depende del LLM. El historial guarda declaraciones originales, no un registro estructurado y validado de ajustes. La memoria es temporal, sin persistencia tras reiniciar. En estas pasadas solo se evaluó LMU; los otros casos se documentan a continuación. La comparación justa sin RAG con el mismo historial sigue pendiente.
+
+## Cinco casos y chat (24/10/2026)
+
+Informe agregado privado: `outputs/evaluation_cases.json`. Respuestas completas y preguntas en las secciones 4–6 del notebook, con referencias y procedencia. D01 se reutiliza del ejemplo de voz y D04 del seguimiento de memoria; D02 y D03 usan las búsquedas reales guardadas del 23/10 sobre el mismo corpus y generaciones nuevas. D05 realizó una búsqueda nueva. Las revisiones de D05 reutilizaron sus mismos fragmentos y conservaron las salidas anteriores en `outputs/evaluation_cases_before_*.json`.
+
+| Caso | Resultado revisado | Fidelidad 0–2 | Contexto 0–2 | Memoria |
+| --- | --- | --- | --- | --- |
+| D01 · LMU | Propuesta de barra trasera respaldada; explicaciones y prioridad requieren más revisión. | 1 | 2 | No aplica a este caso aislado |
+| D02 · iRacing | Reparto hacia atrás, criterio de bloqueo y presión general aparecen en las fichas citadas. Añade explicaciones no desarrolladas y pide datos de coche que el corpus no permite verificar por modelo. | 1 | 1 | No aplica |
+| D03 · ACC | Wheel rate, fast bump y fast rebound coinciden con la ficha y se declara la antigüedad V1. La explicación de rigidez/absorción no está desarrollada en esa celda. | 1 | 2 | No aplica |
+| D04 · seguimiento LMU | Recuerda la propuesta y que todavía no se aplicó. Añade efectos en entrada de curva que no respalda la ficha. | 1 | 2 | 2: distingue propuesta pendiente |
+| D05 · falta de cifra exacta | Reconoce la ausencia de objetivo para modelo/versión, no inventa un número y limita el procedimiento a las fichas térmicas coherentes 10/11. | 2 | 2 | No aplica |
+
+Las puntuaciones son revisiones manuales orientativas para estas preguntas, no medidas de corrección física ni un resultado global comparable. Todos los ID citados existen entre los fragmentos admitidos, pero varias frases siguen teniendo respaldo parcial. Se usaron distintas revisiones de prompt; no se agregan las puntuaciones ni se afirma una mejora frente al modelo base. La comparación posterior necesita condiciones equivalentes y una configuración documentada.
+
+### Conflicto de presión y corrección aplicada
+
+`LMU_USH_08` indica aumentar presión en su lista y disminuirla en la explicación para el centro del neumático más caliente. D05 inicial y una revisión de prompt eligieron una dirección sin señalarlo. Se conserva el original y se registra el conflicto en `prompts/source_quality.json`; la recuperación queda trazada en `documentos_recuperados` y la exclusión en `fuentes_excluidas`. La ficha se excluye de las recomendaciones, sin modificar corpus ni embeddings. La última generación D05 utiliza solo 10/11 y deja de aconsejar una dirección para ese centro caliente contradictorio. El registro es una revisión humana de una ficha conocida, no un detector general automático de conflictos.
+
+Durante D05 también aparecieron citas agrupadas. Se corrigieron la validación de todos sus ID y su ocultación en `respuesta_piloto`, para que la futura web mantenga una respuesta limpia sin perder las evidencias internas.
+
+### Uso y reproducibilidad
+
+Esta fase hizo cinco generaciones para tres casos nuevos: D02 una, D03 una y D05 tres; las dos repeticiones se justificaron por el conflicto. Solo hubo un embedding de consulta nuevo. Tokens del LLM: 11709 de entrada y 1542 de salida. No se conocen cargos efectivos de la cuenta y no se ha cambiado su facturación. D01/D04 y las búsquedas previas no se repitieron.
+
+`scripts/evaluate_cases.py` sin argumentos muestra ayuda sin API; `--run` completa pendientes y reutiliza resultados guardados. `--run --case D05 --repeat` repite explícitamente ese caso guardando una copia previa y reutilizando la recuperación. Cada respuesta conserva fecha, modelo, huella de prompt, documentos y uso. El arranque del notebook se comprobó en un kernel real con entrada `/salir` y las llamadas a generación/embeddings bloqueadas por la prueba: no se ejecutaron las demostraciones ni se consumió API.
+
+Hay 31 pruebas locales, incluyendo el chat, cambios confirmados/cancelados, nueva conversación, errores, fuentes excluidas y citas agrupadas. Los dobles locales se usan solo para comprobar funcionamiento; las respuestas del notebook identificadas como reales proceden de los informes de Gemini. Quedan pendientes correcciones de fidelidad, web y presentación.

@@ -30,3 +30,7 @@ Fuente comunitaria complementaria, no manual oficial. La FAQ permite cambios y a
 No usaremos respuestas generadas por Eva como documentación de referencia. El sitio puede orientar preguntas de contexto y casos de prueba; no se incorporarán a la evaluación respuestas de referencia que también se hayan indexado.
 
 Decisión: candidata útil para una extracción piloto; todavía no incorporada al inventario de copias, aprobada para responder ni indexada. Se mantienen seis originales locales en el corpus.
+
+## Actualización de la evaluación (24/10/2026)
+
+La decisión anterior describe la revisión piloto. El corpus activo posterior contiene 25 fichas de este árbol, ya indexadas. Durante D05 se detecta una contradicción interna en `LMU_USH_08` (Tyre Temperature / Hot Centre/Middle): la lista ordena «Increase tyre pressures» y la explicación recomienda disminuir la presión si el centro está más caliente. La transcripción se conserva fiel al original, sin corregirla ni reindexar. El agente debe advertir el conflicto y no escoger silenciosamente una dirección. La ausencia de una presión óptima para un Ferrari y una versión actuales también debe reconocerse; no se valida una cifra de funcionamiento en pista.

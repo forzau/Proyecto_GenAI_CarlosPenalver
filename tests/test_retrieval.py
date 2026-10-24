@@ -28,7 +28,10 @@ class LocalEmbeddings(Embeddings):
 
 class RetrievalTest(unittest.TestCase):
     def test_embedding2_request_format_without_api(self):
-        embeddings = GeminiRetrievalEmbeddings(api_key="test-only-not-a-key", vertexai=False)
+        embeddings = GeminiRetrievalEmbeddings(
+            api_key="test-only-not-a-key", vertexai=False,
+            request_options={"timeout": 30000, "retry_options": {"attempts": 1}},
+        )
         response = SimpleNamespace(embeddings=[SimpleNamespace(values=[0.1, 0.2])])
         with patch.object(embeddings.client.models, "embed_content", return_value=response) as call:
             self.assertEqual(embeddings.embed_documents(["diagnóstico"]), [[0.1, 0.2]])
@@ -36,6 +39,8 @@ class RetrievalTest(unittest.TestCase):
                 {"parts": [{"text": "title: none | text: diagnóstico"}]}
             ])
             self.assertIsNone(call.call_args.kwargs["config"].task_type)
+            self.assertEqual(call.call_args.kwargs["config"].http_options.timeout, 30000)
+            self.assertEqual(call.call_args.kwargs["config"].http_options.retry_options.attempts, 1)
             embeddings.embed_query("sobreviraje")
             self.assertEqual(call.call_args.kwargs["contents"],
                              "task: search result | query: sobreviraje")

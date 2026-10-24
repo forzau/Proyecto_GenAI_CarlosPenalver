@@ -30,3 +30,6 @@ Thumbs.db
 
 # Enunciado docente local; no se publica en GitHub
 /*.pdf
+
+# Preferencias locales del editor
+.vscode/

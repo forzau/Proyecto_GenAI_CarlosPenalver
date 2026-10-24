@@ -20,6 +20,7 @@ class GeminiRetrievalEmbeddings(GoogleGenerativeAIEmbeddings):
         # shortcut: 4.4.2 envía task_type, no admitido por Embedding 2; retirar al actualizar la integración.
         return EmbedContentConfig(
             output_dimensionality=kwargs.get("output_dimensionality") or self.output_dimensionality,
+            http_options=self.request_options,
         )
 
     # shortcut: el MVP usa llamadas síncronas; adaptar aembed_* si el chat pasa a async.
