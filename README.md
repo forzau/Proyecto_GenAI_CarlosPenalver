@@ -4,15 +4,15 @@ Proyecto de Carlos Peñalver para el módulo de IA Generativa del máster.
 
 BOX interpreta lo que nota el piloto, pregunta por el contexto y propone una prueba de ajuste apoyada en documentación. Usa **Gemini, ChromaDB y LangGraph sobre LangChain**, con un núcleo compartido entre el notebook obligatorio y la web en Streamlit.
 
-La aplicación funciona localmente y está desplegada con acceso privado en [BOX](https://box-ingeniero-pista.streamlit.app/). Las respuestas tienen una evaluación documental parcial; no son reglajes verificados en pista. Resultados y límites en [EVALUACION.md](docs/EVALUACION.md).
+La aplicación funciona localmente y está desplegada con acceso privado en [BOX](https://box-ingeniero-pista.streamlit.app/). Las respuestas tienen una evaluación documental parcial; no son reglajes verificados en pista.
 
 ## Funcionamiento
 
-![Clasificación y ramas del agente](docs/grafo.svg)
+`START → clasificar → [lmu, iracing, acc, distinto] → END`
 
 Un clasificador Gemini con salida estructurada validada dirige cada consulta a LMU, iRacing, ACC o la rama de aclaraciones y otros simuladores. Las ramas especializadas recuperan tres fichas del simulador correspondiente y generan la respuesta. La memoria temporal conserva el historial y pide confirmación antes de cambiar coche o simulador. No se comparten conversaciones entre sesiones.
 
-El corpus tiene **75 fichas: 25 LMU, 20 iRacing y 30 ACC**, procedentes de tres fuentes. Cada ficha completa es un fragmento. Se usa Gemini Embedding 2, con 3072 dimensiones y distancia coseno. Fuentes y reproducción en [FUENTES.md](docs/FUENTES.md) e [inventario](docs/corpus_mvp.json).
+El corpus tiene **75 fichas: 25 LMU, 20 iRacing y 30 ACC**. Cada ficha completa es un fragmento. Se usa Gemini Embedding 2, con 3072 dimensiones y distancia coseno. Las fuentes son [Ultimate Setup Hub](https://ultimatesetuphub.com/race-engineer), la [chuleta de Chris Haye publicada en SimRacingCockpit](https://simracingcockpit.gg/improving-your-car-setup-in-iracing/) y la [guía ACC V1 de Driver61](https://driver61.com/wp-content/uploads/2021/04/Driver61-Assetto-Corsa-Competizione-Setup-Guide-V1.pdf). No se garantiza su aplicación a todos los coches o versiones actuales.
 
 La web ofrece **3.5 Flash-Lite, 3.1 Flash-Lite, 3 Flash Preview, 3.6 Flash y 3.8 Flash**. El modelo elegido clasifica y responde; cambiarlo conserva conversación y borrador. La disponibilidad y cuota dependen del proyecto de Google. Un turno especializado consume normalmente dos invocaciones al LLM y un embedding de consulta; el SDK permite hasta tres intentos por invocación ante errores transitorios. Se muestran avisos seguros de saturación y cuota agotada.
 
@@ -44,19 +44,13 @@ El chat interpreta el contexto en lenguaje natural y admite `/nuevo` y `/salir`.
 
 ## Desplegar en Streamlit Community Cloud
 
-Guía y protección de cuota en **[DESPLIEGUE.md](docs/DESPLIEGUE.md)**. Entrada: `app.py`, rama `main`, Python 3.12. Hacer la aplicación **privada antes de añadir la clave**. Plantilla sin secretos en [.streamlit/secrets.example.toml](.streamlit/secrets.example.toml).
+Entrada: `app.py`, rama `main`, Python 3.12. Hacer la aplicación **privada antes de añadir la clave** en los secretos de Streamlit. Plantilla sin secretos en [.streamlit/secrets.example.toml](.streamlit/secrets.example.toml). Cargar después el paquete privado desde la web.
+
+Si Cloud pierde los datos al reconstruir el servidor, habrá que volver a cargar el paquete. Para reservar cuota para una presentación, usar un proyecto de Google separado de las pruebas: otra clave del mismo proyecto comparte sus límites. El acceso privado evita que visitantes sin autorización consuman API desde BOX.
 
 El logo completo de `ui/box-logo.png` aparece en la bienvenida con «En boxes y listo para escucharte»; la barra lateral encuadra su texto original. La bienvenida desaparece al empezar a conversar.
 
-## Pruebas y reproducción
-
-```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
-```
-
-Las pruebas usan respuestas controladas y vectores locales, sin consumir Gemini. La apertura de recursos reales se comprueba cuando está disponible el paquete privado; esa prueba se omite en una copia sin datos. Comprueban funcionamiento, no exactitud física.
-
-`scripts/evaluate_routing.py` y `scripts/evaluate_cases.py` ejecutan evaluaciones reales solo con `--run`, reutilizan resultados y documentan errores. `scripts/build_corpus.py` reproduce las fichas desde las copias privadas. No ejecutar evaluaciones ni volver a generar embeddings por rutina.
+## Paquete privado
 
 En una copia que tenga el corpus y el índice se puede preparar el paquete privado:
 
@@ -73,6 +67,6 @@ Se actualiza `deployment_manifest.json`, que debe acompañar exactamente a ese p
 - `app.py`, `web_runtime.py` y `ui/`: web y recursos por sesión.
 - `deployment.py`, `deployment_manifest.json`: exportación y carga privada sin API.
 - `prompts/`: instrucciones del agente, clasificador y control de fuentes.
-- `notebooks/`, `tests/`, `scripts/` y `docs/`: entrega, comprobaciones y reproducción.
+- `notebooks/proyecto.ipynb`: notebook de la entrega con cinco ejemplos ejecutados.
 
-Quedan fuera de Git los secretos, corpus, índices, resultados privados, entornos, respaldos y notas internas. No se ha realizado comparación sin RAG, descartada por el alumno al no exigirla el enunciado.
+Quedan fuera de la versión publicada los secretos, corpus, índices, resultados privados, entornos, respaldos, documentación de trabajo, scripts de preparación y pruebas locales. Los prompts se incluyen porque el agente los necesita al ejecutarse. No se ha realizado comparación sin RAG, descartada por el alumno al no exigirla el enunciado.

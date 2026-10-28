@@ -20,13 +20,9 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Corpus e índices: registrar las fuentes en docs/FUENTES.md
-/data/corpus/*
-!/data/corpus/.gitkeep
-/data/chroma/*
-!/data/chroma/.gitkeep
-/outputs/*
-!/outputs/.gitkeep
+# Corpus, índices y resultados privados
+/data/
+/outputs/
 
 # Enunciado docente local; no se publica en GitHub
 /*.pdf
@@ -37,11 +33,8 @@ Thumbs.db
 # Respaldo del entorno anterior al regreso a OneDrive
 .venv_anterior_*/
 
-# Notas locales de trabajo, fuera de la entrega y del despliegue.
+# Material local de trabajo, fuera de la entrega y del despliegue.
 /AGENTS.md
-/docs/CONTINUAR.md
-/docs/PLAN.md
-/docs/CASOS_PILOTO.md
-/docs/REVISION_IR04.md
-/docs/REVISION_USH.md
-/docs/corpus.json
+/docs/
+/tests/
+/scripts/
