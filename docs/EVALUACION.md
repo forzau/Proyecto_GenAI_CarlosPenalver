@@ -182,3 +182,11 @@ La primera prueba de aislamiento con la caché de recursos por sesión detectó 
 Prueba real en navegador: un primer envío no se completó y mostró el mensaje de error genérico; no se capturó la causa interna. Se repitió manualmente y completó la consulta LMU/Ferrari GT3 con una primera propuesta. El seguimiento «todavía no he cambiado nada» conservó el contexto y se refirió a esa propuesta como futura. No se mostraron IDs ni enlaces documentales. Capturas y texto accesible en `outputs/web_smoke_2026-10-26.*`. No se midieron tokens ni facturación de esos tres envíos; no se infiere un coste. Las respuestas siguen incluyendo explicaciones técnicas que requieren revisión; la prueba verifica integración y memoria, no corrección física.
 
 Se ha revisado la página en el navegador integrado, incluido el diseño adaptable con barra lateral plegable. La web queda accesible solo en este equipo; no se ha publicado ni desplegado.
+
+## Prueba de despliegue privado (28/10/2026)
+
+BOX se ha desplegado en Streamlit Community Cloud con Python 3.12, secretos privados y el paquete de 75 fichas y vectores existentes, sin recalcular embeddings del corpus. Se ha comprobado el bloqueo de visitas sin sesión. Las 52 pruebas locales pasan; en la copia pública sin datos pasan 51 y se omite la apertura de recursos privados.
+
+Tres envíos reales en la web: consulta LMU/Ferrari GT3 con 3.5 Flash-Lite, seguimiento con 3.1 Flash-Lite conservando contexto y borrador, y consulta sin simulador en otra sesión que pide aclararlo. La segunda sesión no recibe el historial de la primera. No se han medido tokens, intentos HTTP internos ni facturación de estos envíos. Evidencias privadas en `outputs/streamlit_*_2026-10-28.*`.
+
+Es una comprobación funcional del despliegue, no una nueva evaluación de fidelidad. Las explicaciones sobre transferencia de peso y altura o barra trasera de estas respuestas siguen necesitando revisión documental; no se presentan como física validada ni resultados en pista. No se ha probado en móvil, por decisión del alumno.

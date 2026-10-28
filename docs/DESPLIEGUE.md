@@ -1,6 +1,6 @@
 # Despliegue privado de BOX en Streamlit Community Cloud
 
-Aplicación: [BOX](https://box-ingeniero-pista.streamlit.app/), con acceso privado y Python 3.12. Si el contenedor de Community Cloud se queda en el indicador de carga, la [ruta directa de BOX](https://box-ingeniero-pista.streamlit.app/~/+/) permite abrir la aplicación con la misma sesión autorizada. Ambas rutas se han comprobado sin sesión y bloquean el acceso.
+Aplicación: [BOX](https://box-ingeniero-pista.streamlit.app/), con acceso privado y Python 3.12. Se ha comprobado que una visita sin sesión no puede entrar. Tras un despliegue o reinicio, esperar a que termine el arranque y recargar si el navegador conserva la pantalla de espera.
 
 ## Archivos necesarios
 
