@@ -33,8 +33,8 @@ class GeminiRetrievalEmbeddings(GoogleGenerativeAIEmbeddings):
         return super().embed_query(f"task: search result | query: {text}", **kwargs)
 
 
-def index_documents(documents, embeddings, persist_directory):
-    """Reutiliza la colección del mismo corpus, modelo y formato de embeddings."""
+def collection_name_for_documents(documents, embeddings):
+    """Misma firma para crear el índice en notebook y abrirlo desde la web."""
     if not documents:
         raise ValueError("El corpus está vacío.")
     ids = [doc.metadata["id"] for doc in documents]
@@ -53,7 +53,30 @@ def index_documents(documents, embeddings, persist_directory):
     signature = hashlib.sha256(json.dumps(
         configuration, ensure_ascii=False, sort_keys=True
     ).encode("utf-8")).hexdigest()[:20]
-    collection_name = f"simracing_{signature}"
+    return f"simracing_{signature}"
+
+
+def open_existing_index(documents, embeddings, persist_directory):
+    """Abre solo un índice completo existente; nunca genera embeddings."""
+    collection_name = collection_name_for_documents(documents, embeddings)
+    directory = Path(persist_directory).resolve()
+    if not (directory / "chroma.sqlite3").is_file():
+        raise ValueError("Falta el índice persistente del proyecto.")
+    vectorstore = Chroma(
+        collection_name=collection_name,
+        embedding_function=embeddings,
+        persist_directory=str(directory),
+        create_collection_if_not_exists=False,
+    )
+    if set(vectorstore.get(include=[])["ids"]) != {doc.metadata["id"] for doc in documents}:
+        raise ValueError("El índice no contiene exactamente el corpus esperado.")
+    return vectorstore
+
+
+def index_documents(documents, embeddings, persist_directory):
+    """Reutiliza la colección del mismo corpus, modelo y formato de embeddings."""
+    collection_name = collection_name_for_documents(documents, embeddings)
+    ids = [doc.metadata["id"] for doc in documents]
     directory = str(Path(persist_directory).resolve())
     vectorstore = Chroma(
         collection_name=collection_name,

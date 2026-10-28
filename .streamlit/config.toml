@@ -1,0 +1,20 @@
+[server]
+headless = true
+runOnSave = false
+fileWatcherType = "poll"
+folderWatchBlacklist = [".venv", ".venv_anterior_2026-10-26", ".git", "data", "outputs"]
+
+[browser]
+gatherUsageStats = false
+
+[client]
+showErrorDetails = "none"
+toolbarMode = "minimal"
+
+[theme]
+base = "dark"
+primaryColor = "#F24A44"
+backgroundColor = "#0F131A"
+secondaryBackgroundColor = "#171E29"
+textColor = "#F4F6F9"
+font = "sans serif"

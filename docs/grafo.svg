@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="310" viewBox="0 0 720 310" role="img" aria-label="START, clasificar, cuatro ramas LMU, iRacing, ACC y distinto, END">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#526174"/></marker></defs>
+<rect width="720" height="310" rx="12" fill="#f5f7fa"/>
+<g stroke="#526174" stroke-width="1.6" fill="none" marker-end="url(#a)">
+<path d="M360 48 V71"/><path d="M360 112 V135 H105 V158"/><path d="M360 112 V135 H275 V158"/><path d="M360 112 V135 H445 V158"/><path d="M360 112 V135 H615 V158"/>
+<path d="M105 200 V228 H360 V251"/><path d="M275 200 V228 H360 V251"/><path d="M445 200 V228 H360 V251"/><path d="M615 200 V228 H360 V251"/>
+</g>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="16" text-anchor="middle">
+<rect x="305" y="12" width="110" height="36" rx="18" fill="#26374a"/><text x="360" y="36" fill="white">START</text>
+<rect x="270" y="72" width="180" height="40" rx="8" fill="#dce9f6" stroke="#6386ad"/><text x="360" y="98" fill="#172b43">clasificar</text>
+<g fill="#fff" stroke="#6386ad"><rect x="40" y="160" width="130" height="40" rx="8"/><rect x="210" y="160" width="130" height="40" rx="8"/><rect x="380" y="160" width="130" height="40" rx="8"/><rect x="550" y="160" width="130" height="40" rx="8"/></g>
+<g fill="#172b43"><text x="105" y="186">LMU</text><text x="275" y="186">iRacing</text><text x="445" y="186">ACC</text><text x="615" y="186">distinto</text></g>
+<rect x="305" y="253" width="110" height="36" rx="18" fill="#26374a"/><text x="360" y="277" fill="white">END</text>
+</g></svg>

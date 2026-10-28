@@ -33,3 +33,15 @@ Thumbs.db
 
 # Preferencias locales del editor
 .vscode/
+
+# Respaldo del entorno anterior al regreso a OneDrive
+.venv_anterior_*/
+
+# Notas locales de trabajo, fuera de la entrega y del despliegue.
+/AGENTS.md
+/docs/CONTINUAR.md
+/docs/PLAN.md
+/docs/CASOS_PILOTO.md
+/docs/REVISION_IR04.md
+/docs/REVISION_USH.md
+/docs/corpus.json

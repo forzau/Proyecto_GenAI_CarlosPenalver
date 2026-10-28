@@ -1,0 +1,62 @@
+/* Rojo de competición, blancos limpios y negro azulado. */
+:root {
+  --box-red: #e2211c;
+  --box-primary: #f24a44;
+  --box-red-light: #ff7671;
+  --box-background: #0f131a;
+  --box-surface: #171e29;
+  --box-text: #f4f6f9;
+}
+.stApp { background: var(--box-background); }
+.stMainBlockContainer { max-width: 900px; padding-top: 4.2rem; padding-bottom: 3rem; }
+header[data-testid="stHeader"] { background: transparent; }
+[data-testid="stSidebar"] { border-right: 1px solid #303645; }
+[data-testid="stSidebar"] > div:first-child { padding-top: 2.5rem; }
+.sidebar-logo { display: block; width: 190px; max-width: 100%; height: auto; overflow: hidden; margin-bottom: .4rem; }
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] { color: #8d96a2; line-height: 1.6; }
+[data-testid="stSidebar"] [data-testid="stButton"] { margin-top: 1.5rem; }
+.welcome {
+  min-height: calc(100dvh - 16rem); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.25rem; text-align: center;
+}
+.welcome .welcome-logo { line-height: 1; margin: 0; padding: 0; max-width: 85%; }
+.welcome-logo img {
+  display: block; width: clamp(240px, 30vw, 340px); max-width: 100%; height: auto;
+}
+.welcome p { color: #b6bdc7; font-size: clamp(1rem, 2vw, 1.2rem); margin: 0; }
+.context-label { color: #929ca9; font-size: .65rem; font-weight: 600; letter-spacing: .12em; margin-top: 1.3rem; }
+.context-value { color: var(--box-text); font-size: .95rem; line-height: 1.5; margin: .35rem 0 1.1rem; overflow-wrap: anywhere; }
+[data-testid="stChatMessage"] { border: 1px solid #343c4a; border-radius: 12px; padding: 1.15rem; margin-top: .85rem; }
+[data-testid="stChatMessageContent"] p, [data-testid="stChatMessageContent"] li { line-height: 1.75; }
+[data-testid="stChatInput"] { border: 1px solid #4c4e5a; border-radius: 12px; }
+@media (max-width: 640px) {
+  .stMainBlockContainer { padding-top: 2rem; padding-left: 1rem; padding-right: 1rem; }
+}
+
+[data-testid="stSidebar"] [data-testid="stButton"] button {
+  border-color: #743b3b;
+  background: rgba(226, 33, 28, .10);
+  color: var(--box-text);
+}
+[data-testid="stSidebar"] [data-testid="stButton"] button:hover:not(:disabled) {
+  border-color: var(--box-primary);
+  background: rgba(226, 33, 28, .21);
+  color: #ffffff;
+}
+[data-testid="stChatInput"]:focus-within {
+  border-color: var(--box-primary);
+  box-shadow: 0 0 0 1px var(--box-primary);
+}
+.st-key-composer { position: relative; }
+.st-key-composer [data-testid="stChatInput"] textarea { padding-bottom: 3.25rem; }
+.st-key-composer [data-testid="stChatInputSubmitButton"] {
+  position: absolute; right: .75rem; bottom: .75rem;
+}
+.st-key-modelo_control {
+  position: absolute; right: 3.5rem; bottom: .6rem; width: 225px; max-width: calc(100% - 4rem);
+}
+.st-key-modelo_control [data-baseweb="select"] > div {
+  background: transparent; border-color: transparent; min-height: 32px;
+  font-size: .85rem;
+}
+.st-key-modelo_control [data-baseweb="select"]:focus-within > div { border-color: var(--box-primary); }

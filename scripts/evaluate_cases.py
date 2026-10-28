@@ -1,5 +1,6 @@
 """Completa D02, D03 y D05 explícitamente; conserva D01/D04 y resultados previos.
 
+Los informes del 24/10 son históricos. Nuevas pasadas usan también el clasificador automático.
 Sin --run no llama a ninguna API. --run reutiliza los casos ya completados.
 Para repetir uno deliberadamente: --run --case D05 --repeat.
 """
@@ -77,7 +78,7 @@ def main():
         output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     llm = ChatGoogleGenerativeAI(model=os.environ["GEMINI_MODEL"], api_key=os.environ["GOOGLE_API_KEY"],
-                               vertexai=False, temperature=1.0, max_output_tokens=1800, max_retries=1, timeout=45)
+                               vertexai=False, temperature=1.0, max_output_tokens=1800, max_retries=3, timeout=45)
     cached = {"D02": retrieval["results"][1], "D03": retrieval["results"][2]}
     cases = {
         "D02": {"simulator": "iracing", "question": cached["D02"]["query"]},
@@ -131,9 +132,11 @@ def main():
             app = crear_grafo(store, llm, prompt, checkpointer=InMemorySaver())
             config = {"configurable": {"thread_id": uuid4().hex}}
             print(identifier + ": generando respuesta de evaluación.", flush=True)
-            result = app.invoke({"pregunta": case["question"], "simulador": case["simulator"], "coche": case.get("car")}, config)
-            result_record.update(status="ok", answer=result["respuesta"], pilot_answer=result["respuesta_piloto"],
-                                 sources=result["fuentes"], usage=result["uso"], context=result["contexto"],
+            result = app.invoke({"pregunta": case["question"]}, config)
+            result_record.update(status="error" if result.get("error") else "ok", answer=result["respuesta"], pilot_answer=result["respuesta_piloto"],
+                                 sources=result["fuentes"], usage=result["uso"], context=result.get("contexto"),
+                                 classification=result["clasificacion"], route=result["nodo_usado"],
+                                 classifier_usage=result["uso_clasificacion"], response_usage=result["uso_respuesta"],
                                  documents=[dict(d.metadata, text=d.page_content) for d in result["documentos"]],
                                  retrieved_documents=[dict(d.metadata, text=d.page_content) for d in result["documentos_recuperados"]],
                                  excluded_sources=result["fuentes_excluidas"],

@@ -6,7 +6,7 @@ from unittest.mock import Mock, patch
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 
-from retrieval import GeminiRetrievalEmbeddings, index_documents, search
+from retrieval import GeminiRetrievalEmbeddings, index_documents, open_existing_index, search
 
 
 class LocalEmbeddings(Embeddings):
@@ -27,6 +27,23 @@ class LocalEmbeddings(Embeddings):
 
 
 class RetrievalTest(unittest.TestCase):
+    def test_web_opens_existing_index_without_repairing_or_reembedding(self):
+        documents = [Document(page_content="ficha", metadata={"id": sim, "simulator": sim})
+                     for sim in ("lmu", "iracing", "acc")]
+        embeddings = LocalEmbeddings()
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as directory:
+            with self.assertRaisesRegex(ValueError, "Falta el índice"):
+                open_existing_index(documents, embeddings, directory)
+            self.assertEqual(embeddings.calls, 0)
+            store = index_documents(documents, embeddings, directory)
+            reopened = open_existing_index(documents, embeddings, directory)
+            self.assertEqual(set(reopened.get(include=[])["ids"]), {"lmu", "iracing", "acc"})
+            self.assertEqual(embeddings.calls, 1)
+            store.delete(ids=["lmu"])
+            with self.assertRaisesRegex(ValueError, "exactamente el corpus"):
+                open_existing_index(documents, embeddings, directory)
+            self.assertEqual(embeddings.calls, 1)
+
     def test_embedding2_request_format_without_api(self):
         embeddings = GeminiRetrievalEmbeddings(
             api_key="test-only-not-a-key", vertexai=False,

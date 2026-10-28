@@ -1,6 +1,20 @@
 # Evaluación prevista
 
-Estado: cinco casos D01–D05 con respuestas reales, cubriendo LMU, iRacing, ACC, seguimiento y presión exacta no disponible; además se conserva un seguimiento aplicado. Chat en notebook y 31 pruebas locales. La revisión documental es parcial. La comparación con Gemini sin RAG se descartó por decisión del alumno el 24/10/2026; no es un requisito del enunciado. Los escenarios de piloto son ficticios salvo que se indique una prueba real en el simulador.
+Estado: cinco casos D01–D05 con respuestas reales, cubriendo LMU, iRacing, ACC, seguimiento y presión exacta no disponible; además se conserva un seguimiento aplicado. Chat en notebook y 31 pruebas locales. Desde el 26/10 también hay clasificación automática y 15 casos conversacionales reales; ver el apartado siguiente. La revisión documental es parcial. La comparación con Gemini sin RAG se descartó por decisión del alumno el 24/10/2026; no es un requisito del enunciado. Los escenarios de piloto son ficticios salvo que se indique una prueba real en el simulador.
+
+## Enrutamiento automático del 26/10/2026
+
+Grafo `START → clasificar → [lmu, iracing, acc, distinto] → END`, sin selección manual. 36 pruebas locales superadas y arranque de todas las celdas de código en un kernel Jupyter real, con `/salir` y llamadas a LLM/embeddings bloqueadas: cero llamadas durante el arranque.
+
+Evaluación real explícita: 15 casos finales con sus comprobaciones superadas. R01/R14 preguntan por el simulador sin inferirlo del Ferrari/Spa; R02 aclara LMU conservando el síntoma; R03 mantiene contexto; R04/R05 cambian a ACC con confirmación y sin reglajes LMU; R06/R07 proponen iRacing y cancelan; R08 reconduce; R09 atiende iRacing; R10/R11 orientan sobre Automobilista 2 sin Chroma; R12 distingue Assetto Corsa de ACC; R13 pide desambiguar; R15 conserva ACC ante una negación de cambio. Esto acredita solo lo observado en esta muestra.
+
+Hubo un `GoogleAPIError` en la generación de R11. Se conserva el intento y se reanudó solo desde ese caso, restaurando mensajes y contexto de los resultados previos. Se completaron los pendientes. No se cambió de modelo. Consumo: **25 llamadas al modelo**, **5 embeddings de consulta**, **0 embeddings del corpus**; **31.026 tokens de entrada y 3.254 de salida comunicados**. El consumo del intento fallido puede no estar comunicado y la facturación real no se conoce. No se reindexó ni se modificó el corpus.
+
+El clasificador y el prompt especializado se mantuvieron durante la pasada. En la reanudación, las envolturas de las ramas pasaron de lambda a funciones con nombre y el prompt de otros simuladores se reforzó para priorizar observación/conducción sin prescribir reglajes específicos cuando falta coche. El informe conserva las huellas iniciales y por intento; no se trata de una comparación controlada de prompts.
+
+**Fidelidad parcial:** R02/R03 añaden mecanismos y efectos en otras fases no respaldados; R05/R15 desarrollan física no descrita en la celda ACC y omiten su antigüedad V1; R15 propone dos variables inicialmente. R09 acierta el sentido del reparto pero añade explicaciones. R10 dio una orientación de diferencial y transferencia cuestionable; tras reforzar el prompt, R11/R12 priorizan investigación pero siguen sin validación técnica y pueden ser demasiado categóricos. Tener ruta correcta o citas válidas no resuelve estos límites.
+
+Esa pasada y sus revisiones se conservan en el informe; el alumno pidió después retirar las transcripciones del notebook para aligerarlo. Informe privado: `outputs/routing_evaluation_2026-10-26.json`. `scripts/evaluate_routing.py` no usa API sin `--run`; `--resume` continúa pendientes conservando intentos. Los apartados siguientes describen propuestas descartadas y etapas históricas del 23/24 de octubre.
 
 ## Propuesta de comparación descartada
 
@@ -148,3 +162,23 @@ Esta fase hizo cinco generaciones para tres casos nuevos: D02 una, D03 una y D05
 `scripts/evaluate_cases.py` sin argumentos muestra ayuda sin API; `--run` completa pendientes y reutiliza resultados guardados. `--run --case D05 --repeat` repite explícitamente ese caso guardando una copia previa y reutilizando la recuperación. Cada respuesta conserva fecha, modelo, huella de prompt, documentos y uso. El arranque del notebook se comprobó en un kernel real con entrada `/salir` y las llamadas a generación/embeddings bloqueadas por la prueba: no se ejecutaron las demostraciones ni se consumió API.
 
 Hay 31 pruebas locales, incluyendo el chat, cambios confirmados/cancelados, nueva conversación, errores, fuentes excluidas y citas agrupadas. Los dobles locales se usan solo para comprobar funcionamiento; las respuestas del notebook identificadas como reales proceden de los informes de Gemini. Quedan pendientes correcciones de fidelidad, web y presentación.
+
+## Cinco salidas nativas del notebook (26/10/2026)
+
+Se sustituyeron transcripciones en Markdown por cinco celdas de código realmente ejecutadas con Gemini 3.1 Flash-Lite. Se guardan los mensajes `display_data` recibidos de Jupyter, con sus contadores de ejecución reales (8–12); no se simularon resultados ni se trasladaron respuestas antiguas como si fueran ejecuciones nuevas. El setup y el chat también se ejecutaron; se envió `/salir` al prompt interactivo para continuar.
+
+Una primera clasificación falló con `GoogleAPIError`, sin respuesta ni embedding; se conserva en `outputs/notebook_live_intento_fallido_1_2026-10-26.json`. La pasada completa posterior terminó los cinco ejemplos: 10 llamadas al modelo, 5 embeddings de consulta, 0 embeddings del corpus, 16.327 tokens de entrada y 1.153 de salida comunicados. Total: 11 llamadas incluyendo el intento fallido, cuyo consumo y facturación no se conocen. Informe: `outputs/notebook_live_2026-10-26.json`.
+
+Los dos primeros ejemplos conservaron el contexto LMU/Ferrari y distinguieron la propuesta aún no aplicada; los siguientes usaron iRacing, ACC y LMU en sesiones nuevas. Todos los ID citados pertenecen a los fragmentos admitidos, y el último evitó una cifra exacta no documentada. Persisten límites técnicos: explicación del rake no verificada en 1/2; efecto en entrada añadido en 2; explicaciones y cita de reversión con respaldo parcial en 3; dos variables a la vez y mecanismos añadidos en 4; afirmación demasiado general de que una cifra «no existe» en 5, cuando solo se acredita que el corpus no la aporta. No son resultados de pista ni una validación completa del consejo.
+
+Se dividieron literales largos para mejorar la lectura tras ejecutar y se verificó igualdad de AST; no se repitieron llamadas por ese cambio de formato. El núcleo y los prompts no cambiaron. Las respuestas históricas y tablas se mantienen en los informes, fuera del notebook simplificado.
+
+## Primera web local (26/10/2026)
+
+Se mantiene el chat del notebook. La web local reutiliza `crear_grafo` y Chroma existentes, pero solo muestra `respuesta_piloto`. 44 pruebas locales superadas: se añade apertura del índice sin embeddings y sin reparación automática, junto a 7 casos AppTest de recursos reales por sesión sin API, limpieza de fuentes, no repetir llamadas al rerenderizar, cambio confirmado, reinicio que elimina checkpoints, fallos de generación/clasificación y errores de configuración sin exposición de detalles. Las 7 pruebas de web se repitieron tras bloquear los controles durante el procesamiento. Las respuestas controladas de AppTest son pruebas funcionales; no se presentan como generaciones de Gemini.
+
+La primera prueba de aislamiento con la caché de recursos por sesión detectó que AppTest emplea un identificador interno fijo para todos sus ejecutores. Se simplificó la aplicación para conservar el agente directamente en session_state; las pruebas verifican dos grafos y checkpointers distintos y reutilización en reruns. El código final no depende de esa caché.
+
+Prueba real en navegador: un primer envío no se completó y mostró el mensaje de error genérico; no se capturó la causa interna. Se repitió manualmente y completó la consulta LMU/Ferrari GT3 con una primera propuesta. El seguimiento «todavía no he cambiado nada» conservó el contexto y se refirió a esa propuesta como futura. No se mostraron IDs ni enlaces documentales. Capturas y texto accesible en `outputs/web_smoke_2026-10-26.*`. No se midieron tokens ni facturación de esos tres envíos; no se infiere un coste. Las respuestas siguen incluyendo explicaciones técnicas que requieren revisión; la prueba verifica integración y memoria, no corrección física.
+
+Se ha revisado la página en el navegador integrado, incluido el diseño adaptable con barra lateral plegable. La web queda accesible solo en este equipo; no se ha publicado ni desplegado.

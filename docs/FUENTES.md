@@ -60,7 +60,7 @@ La nueva obtención y la transcripción visual requieren revisión manual; no se
 
 ## Material anterior en reserva
 
-Las seis copias de `data/corpus/pendientes/` y [corpus.json](corpus.json) son un archivo de fuentes candidatas, fuera del corpus activo. Las revisiones [IR04](REVISION_IR04.md) y [Ultimate Setup Hub](REVISION_USH.md) conservan la exploración anterior; no amplían la selección actual.
+Las fuentes candidatas y las notas de exploración anteriores se conservan solo en la copia local. No forman parte del corpus activo ni de esta publicación.
 
 ## Referencias de clase
 
