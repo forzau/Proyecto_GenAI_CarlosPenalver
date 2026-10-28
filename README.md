@@ -4,7 +4,7 @@ Proyecto de Carlos Peñalver para el módulo de IA Generativa del máster.
 
 BOX interpreta lo que nota el piloto, pregunta por el contexto y propone una prueba de ajuste apoyada en documentación. Usa **Gemini, ChromaDB y LangGraph sobre LangChain**, con un núcleo compartido entre el notebook obligatorio y la web en Streamlit.
 
-La aplicación funciona localmente y está preparada para Streamlit Community Cloud. Las respuestas tienen una evaluación documental parcial; no son reglajes verificados en pista. Resultados y límites en [EVALUACION.md](docs/EVALUACION.md).
+La aplicación funciona localmente y está desplegada con acceso privado en [BOX](https://box-ingeniero-pista.streamlit.app/). Las respuestas tienen una evaluación documental parcial; no son reglajes verificados en pista. Resultados y límites en [EVALUACION.md](docs/EVALUACION.md).
 
 ## Funcionamiento
 

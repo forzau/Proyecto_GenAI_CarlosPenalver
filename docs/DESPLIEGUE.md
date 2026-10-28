@@ -1,5 +1,7 @@
 # Despliegue privado de BOX en Streamlit Community Cloud
 
+Aplicación: [BOX](https://box-ingeniero-pista.streamlit.app/), con acceso privado y Python 3.12. Si el contenedor de Community Cloud se queda en el indicador de carga, la [ruta directa de BOX](https://box-ingeniero-pista.streamlit.app/~/+/) permite abrir la aplicación con la misma sesión autorizada. Ambas rutas se han comprobado sin sesión y bloquean el acceso.
+
 ## Archivos necesarios
 
 El repositorio contiene el código y `.streamlit/secrets.example.toml`, sin credenciales. El autor conserva aparte `box_datos_privados_2026-10-28.json.gz`, correspondiente al manifiesto publicado. Contiene solo las 75 fichas y sus vectores, sin PDFs originales, clave ni conversaciones. No subirlo a GitHub: las fuentes no tienen una licencia de redistribución identificada y se mantienen privadas.
